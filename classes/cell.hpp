@@ -1,0 +1,4 @@
+class cell
+{
+    int type;
+};

@@ -10,7 +10,6 @@ class level
     snake s;
 
 public:
-    void check();
 };
 
 #endif

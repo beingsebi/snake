@@ -1,4 +1,4 @@
 class cell
 {
-    int type;
+    int enabled, x, y;
 };

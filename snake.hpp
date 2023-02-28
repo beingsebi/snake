@@ -4,10 +4,10 @@
 #include "canvas.hpp"
 using std::pair;
 using std::vector;
-class snake
+class Snake
 {
     vector<pair<int, int>> v;
-    canvas *c;
+    Canvas *c;
 };
 
 #endif

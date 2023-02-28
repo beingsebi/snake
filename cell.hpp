@@ -1,7 +1,7 @@
 #ifndef CELL_H
 #define CELL_H
 
-class cell
+class Cell
 {
     int enabled, x, y;
 };

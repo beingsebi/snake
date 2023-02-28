@@ -4,11 +4,11 @@
 #include "cell.hpp"
 #include <vector>
 using std::vector;
-class canvas
+class Canvas
 {
     int lines;
     int columns;
-    vector<vector<cell>> matrix;
+    vector<vector<Cell>> matrix;
 };
 
 #endif

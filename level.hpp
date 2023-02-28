@@ -4,10 +4,10 @@
 #include <iostream>
 #include "canvas.hpp"
 #include "snake.hpp"
-class level
+class Level
 {
-    canvas c;
-    snake s;
+    Canvas c;
+    Snake s;
 
 public:
 };

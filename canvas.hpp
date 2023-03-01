@@ -6,9 +6,11 @@
 using std::vector;
 class Canvas
 {
-    int lines;
-    int columns;
     vector<vector<Cell>> matrix;
+
+public:
+    Canvas();
+    vector<vector<Cell>> get_matrix() const;
 };
 
 #endif

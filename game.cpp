@@ -1,9 +1,13 @@
 #include "game.hpp"
+#include <SFML/Graphics.hpp>
+#include <fstream>
+using std::ifstream;
 
 Game::Game() // constructor
 {
+    this->font.loadFromFile("Roboto.ttf");
     this->video_mode.width = 800 + 2;
-    this->video_mode.height = 600 + 2;
+    this->video_mode.height = 600 + 2 + 25;
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
 }
@@ -37,6 +41,30 @@ void Game::draw_canvas(const vector<vector<Cell>> &m)
         for (const auto &j : i)
             this->window->draw(j.get_rect());
 }
+string Game::get_high_score() const
+{
+    static string s;
+    ifstream f("high_score.txt");
+    f >> s;
+    return s;
+}
+
+void Game::draw_scores()
+{
+    this->text_score.setFont(this->font);
+    this->text_score.setString("Score:  " + std::to_string(this->score));
+    this->text_score.setCharacterSize(20);
+    this->text_score.setFillColor(sf::Color::White);
+    this->text_score.setPosition(15.f, 602.f);
+    this->window->draw(this->text_score);
+
+    this->text_high_score.setFont(this->font);
+    this->text_high_score.setString("High score:  " + this->get_high_score());
+    this->text_high_score.setCharacterSize(20);
+    this->text_high_score.setFillColor(sf::Color::White);
+    this->text_high_score.setPosition(645.f, 602.f);
+    this->window->draw(this->text_high_score);
+}
 
 // public functions:
 bool Game::is_running() const
@@ -55,7 +83,7 @@ void Game::render()
 
     // draw here
     this->draw_canvas(this->canvas.get_matrix());
-
+    this->draw_scores();
     //
     this->window->display();
 }

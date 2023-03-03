@@ -2,17 +2,16 @@
 #include "constants.hpp"
 #include <random>
 #include <ctime>
-using std::mt19937;
 
 Canvas::Canvas()
 {
-    mt19937 mt(time(nullptr));
+    std::mt19937 mt(time(nullptr));
     for (int i = 0; i < Constants::lines; i++)
     {
         this->matrix.push_back(vector<Cell>());
         for (int j = 0; j < Constants::columns; j++)
             this->matrix[i].push_back(Cell(i, j,
-                                           ((mt() % 11) != 0) | (i == 0) | (j == 0) | (i == Constants::lines - 1) | (j == Constants::columns - 1)));
+                                           (((mt() % 11) != 0) | (i == 0) | (j == 0) | (i == Constants::lines - 1) | (j == Constants::columns - 1))));
     }
 }
 

@@ -7,7 +7,11 @@ using std::vector;
 class Snake
 {
     vector<pair<int, int>> v;
-    Canvas *c;
+
+public:
+    Snake();
+    ~Snake();
+    Snake(const vector<pair<int, int>>);
 };
 
 #endif

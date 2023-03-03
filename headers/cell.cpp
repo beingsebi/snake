@@ -18,6 +18,7 @@ Cell::Cell(const int &x, const int &y, const bool b)
     else
     {
         this->rect.setFillColor(Constants::color4);
+        this->rect.setOutlineThickness(0.f);
     }
 }
 

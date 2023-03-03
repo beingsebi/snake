@@ -2,6 +2,7 @@
 #define CONSTANTS_H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 struct Constants
 {
     static sf::Vector2f const cell_size;
@@ -15,6 +16,7 @@ struct Constants
 
     static int const lines;
     static int const columns;
+    static std::vector<std::pair<int, int>> const directions;
 };
 
 #endif

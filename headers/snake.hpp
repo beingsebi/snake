@@ -7,6 +7,7 @@ using std::vector;
 class Snake
 {
     vector<pair<int, int>> positions;
+    int direction;
 
 public:
     Snake();

@@ -5,7 +5,7 @@ using std::ifstream;
 
 Game::Game() // constructor
 {
-    this->font.loadFromFile("Roboto.ttf");
+    this->font.loadFromFile("files/Roboto.ttf");
     this->video_mode.width = 800 + 2;
     this->video_mode.height = 600 + 2 + 25;
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
@@ -44,7 +44,7 @@ void Game::draw_canvas(const vector<vector<Cell>> &m)
 string Game::get_high_score() const
 {
     static string s;
-    ifstream f("high_score.txt");
+    ifstream f("files/high_score.txt");
     f >> s;
     return s;
 }

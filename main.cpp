@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <SFML/Graphics.hpp>
-#include "game.hpp"
+#include "headers/game.hpp"
 
 int main()
 {

@@ -1,4 +1,4 @@
 *.exe
 .vscode
 *.o
-sfml-app
+snake

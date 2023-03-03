@@ -6,12 +6,12 @@ using std::pair;
 using std::vector;
 class Snake
 {
-    vector<pair<int, int>> v;
+    vector<pair<int, int>> positions;
 
 public:
     Snake();
     ~Snake();
-    Snake(const vector<pair<int, int>>);
+    friend class Game;
 };
 
 #endif

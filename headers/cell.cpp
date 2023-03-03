@@ -21,22 +21,20 @@ Cell::Cell(const int &x, const int &y, const bool b)
     }
 }
 
-sf::RectangleShape Cell::get_rect() const
-{
-    return this->rect;
-}
-
 void Cell::set_coords(const int &x, const int &y)
 {
-    this->rect.setPosition(static_cast<float>(1 + x * Constants::cell_size.x),
-                           static_cast<float>(1 + y * Constants::cell_size.y));
+    // Y FIRST, X SECOND !!!
+    this->rect.setPosition(static_cast<float>(1 + y * Constants::cell_size.y),
+                           static_cast<float>(1 + x * Constants::cell_size.x));
 }
+
 void Cell::enable()
 {
     this->enabled = 1;
     this->rect.setFillColor(Constants::color1);
     this->rect.setOutlineColor(Constants::color3);
 }
+
 void Cell::disable()
 {
     this->enabled = 0;

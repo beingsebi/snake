@@ -10,6 +10,8 @@ struct Constants
     static sf::Color const color2;
     static sf::Color const color3;
     static sf::Color const color4;
+    static sf::Color const color5;
+    static sf::Color const color6;
 
     static int const lines;
     static int const columns;

@@ -11,6 +11,7 @@ Game::Game() // constructor
     this->video_mode.height = 600 + 2 + 25;
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
+    this->window->setFramerateLimit(2);
 }
 
 Game::~Game() // destructor

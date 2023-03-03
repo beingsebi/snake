@@ -3,7 +3,6 @@
 #include <random>
 #include <ctime>
 
-#include <iostream>
 Snake::Snake()
 {
 
@@ -35,8 +34,6 @@ Snake::Snake()
         positions = {{Constants::lines - 3, Constants::columns - 1}, {Constants::lines - 2, Constants::columns - 1}, {Constants::lines - 1, Constants::columns - 1}};
         break;
     }
-    for (auto i : positions)
-        std::cout << i.first << " " << i.second << std::endl;
 };
 Snake::~Snake()
 {

@@ -15,7 +15,7 @@ class Game
     sf::Text text_high_score;
     sf::Font font;
     Canvas canvas;
-    int score;
+    int score = 0;
     void poll_events();
     string get_high_score() const;
     void draw_canvas(const vector<vector<Cell>> &);

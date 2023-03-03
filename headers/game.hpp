@@ -21,7 +21,7 @@ class Game
 
     void poll_events();
     string get_high_score() const;
-    void draw_canvas(const vector<vector<Cell>> &);
+    void draw_canvas();
     void draw_scores();
 
 public:

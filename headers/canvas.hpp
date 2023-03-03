@@ -13,7 +13,7 @@ class Canvas
 
 public:
     Canvas();
-    vector<vector<Cell>> get_matrix() const;
+    friend class Game;
 };
 
 #endif

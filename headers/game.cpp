@@ -35,9 +35,9 @@ void Game::poll_events()
     }
 }
 
-void Game::draw_canvas(const vector<vector<Cell>> &m)
+void Game::draw_canvas()
 {
-    for (const auto &i : m)
+    for (const auto &i : this->canvas.matrix)
         for (const auto &j : i)
             this->window->draw(j.get_rect());
 }
@@ -82,7 +82,7 @@ void Game::render()
     this->window->clear();
 
     // draw here
-    this->draw_canvas(this->canvas.get_matrix());
+    this->draw_canvas();
     this->draw_scores();
     //
     this->window->display();

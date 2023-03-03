@@ -14,8 +14,3 @@ Canvas::Canvas()
                                            (((mt() % 11) != 0) | (i == 0) | (j == 0) | (i == Constants::lines - 1) | (j == Constants::columns - 1))));
     }
 }
-
-vector<vector<Cell>> Canvas::get_matrix() const
-{
-    return this->matrix;
-}

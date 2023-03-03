@@ -9,10 +9,10 @@ class Cell
 
 public:
     Cell(const int &, const int &, const bool);
-    sf::RectangleShape get_rect() const;
     void set_coords(const int &, const int &);
     void enable();
     void disable();
+    friend class Game;
 };
 
 #endif

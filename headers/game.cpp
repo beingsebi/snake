@@ -1,3 +1,4 @@
+#include "constants.hpp"
 #include "game.hpp"
 #include <SFML/Graphics.hpp>
 #include <fstream>
@@ -49,20 +50,39 @@ string Game::get_high_score() const
     return s;
 }
 
+void Game::draw_snake()
+{
+    static sf::RectangleShape rect;
+    rect.setSize(Constants::cell_size);
+    rect.setOutlineThickness(0.f);
+    rect.setFillColor(Constants::color6);
+    rect.setPosition(static_cast<float>(1 + snake.positions[0].second * Constants::cell_size.y),
+                     static_cast<float>(1 + snake.positions[0].first * Constants::cell_size.x));
+    this->window->draw(rect);
+
+    rect.setFillColor(Constants::color5);
+    for (int i = 1; i < (int)this->snake.positions.size(); i++)
+    {
+        rect.setPosition(static_cast<float>(1 + snake.positions[i].second * Constants::cell_size.y),
+                         static_cast<float>(1 + snake.positions[i].first * Constants::cell_size.x));
+        this->window->draw(rect);
+    }
+}
+
 void Game::draw_scores()
 {
     this->text_score.setFont(this->font);
     this->text_score.setString("Score:  " + std::to_string(this->score));
     this->text_score.setCharacterSize(20);
     this->text_score.setFillColor(sf::Color::White);
-    this->text_score.setPosition(15.f, 602.f);
+    this->text_score.setPosition(40.f, 602.f);
     this->window->draw(this->text_score);
 
     this->text_high_score.setFont(this->font);
     this->text_high_score.setString("High score:  " + this->get_high_score());
     this->text_high_score.setCharacterSize(20);
     this->text_high_score.setFillColor(sf::Color::White);
-    this->text_high_score.setPosition(645.f, 602.f);
+    this->text_high_score.setPosition(625.f, 602.f);
     this->window->draw(this->text_high_score);
 }
 
@@ -83,6 +103,7 @@ void Game::render()
 
     // draw here
     this->draw_canvas();
+    this->draw_snake();
     this->draw_scores();
     //
     this->window->display();

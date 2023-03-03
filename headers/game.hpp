@@ -22,6 +22,7 @@ class Game
     void poll_events();
     string get_high_score() const;
     void draw_canvas();
+    void draw_snake();
     void draw_scores();
 
 public:

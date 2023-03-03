@@ -13,3 +13,4 @@ sf::Color const Constants::color6 = sf::Color(51, 204, 30, 255);
 int const Constants::lines = 15;
 int const Constants::columns = 20;
 std::vector<std::pair<int, int>> const Constants::directions = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+//                                                              jos      stanga    sus    dreapta

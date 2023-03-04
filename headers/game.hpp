@@ -24,6 +24,7 @@ class Game
     void draw_canvas();
     void draw_snake();
     void draw_scores();
+    void reset();
 
 public:
     Game();

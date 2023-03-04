@@ -5,7 +5,6 @@
 
 Snake::Snake()
 {
-
     std::mt19937 mt(time(nullptr));
     switch (mt() % 8)
     {
@@ -46,4 +45,11 @@ Snake::Snake()
 Snake::~Snake()
 {
     // std::cout << "Snake deleted" << std::endl;
+}
+
+void Snake::reset()
+{
+    // *this = Snake();
+    this->~Snake();
+    new (this) Snake();
 }

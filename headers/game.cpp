@@ -21,6 +21,15 @@ Game::~Game() // destructor
 
 // private functions:
 
+void Game::reset()
+{
+    canvas.~Canvas();
+    new (&canvas) Canvas();
+    snake.~Snake();
+    new (&snake) Snake();
+    score = 0;
+}
+
 void Game::poll_events()
 {
     while (this->window->pollEvent(this->ev))
@@ -29,6 +38,40 @@ void Game::poll_events()
         {
         case sf::Event::Closed:
             this->window->close();
+            break;
+
+        case sf::Event::KeyPressed:
+
+            switch (this->ev.key.code)
+            {
+            case sf::Keyboard::Escape:
+                this->reset();
+                break;
+
+            case sf::Keyboard::A:
+            case sf::Keyboard::Left:
+                snake.direction = 1;
+                break;
+
+            case sf::Keyboard::W:
+            case sf::Keyboard::Up:
+                snake.direction = 2;
+                break;
+
+            case sf::Keyboard::D:
+            case sf::Keyboard::Right:
+                snake.direction = 3;
+                break;
+
+            case sf::Keyboard::S:
+            case sf::Keyboard::Down:
+                snake.direction = 0;
+                break;
+
+            default:
+                break;
+            }
+
             break;
 
         default:

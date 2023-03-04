@@ -12,6 +12,7 @@ class Snake
 public:
     Snake();
     ~Snake();
+    void reset();
     friend class Game;
 };
 

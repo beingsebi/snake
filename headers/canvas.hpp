@@ -13,6 +13,7 @@ class Canvas
 
 public:
     Canvas();
+    bool is_disabled(const pair<int, int> &) const;
     friend class Game;
 };
 

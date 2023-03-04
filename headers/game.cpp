@@ -23,6 +23,7 @@ Game::~Game() // destructor
 
 void Game::reset()
 {
+    game_over = 0;
     canvas.~Canvas();
     new (&canvas) Canvas();
     snake.~Snake();
@@ -50,21 +51,29 @@ void Game::poll_events()
 
             case sf::Keyboard::A:
             case sf::Keyboard::Left:
+                if (snake.direction == 3)
+                    game_over = 1;
                 snake.direction = 1;
                 break;
 
             case sf::Keyboard::W:
             case sf::Keyboard::Up:
+                if (snake.direction == 0)
+                    game_over = 1;
                 snake.direction = 2;
                 break;
 
             case sf::Keyboard::D:
             case sf::Keyboard::Right:
+                if (snake.direction == 1)
+                    game_over = 1;
                 snake.direction = 3;
                 break;
 
             case sf::Keyboard::S:
             case sf::Keyboard::Down:
+                if (snake.direction == 2)
+                    game_over = 1;
                 snake.direction = 0;
                 break;
 
@@ -129,6 +138,37 @@ void Game::draw_scores()
     this->text_high_score.setPosition(625.f, 602.f);
     this->window->draw(this->text_high_score);
 }
+void Game::check_game_over()
+{
+    if (this->snake.positions.front().first < 0)
+    {
+        this->game_over = 1;
+        return;
+    }
+    if (this->snake.positions.front().second < 0)
+    {
+        this->game_over = 1;
+        return;
+    }
+    if (this->snake.positions.front().first >= Constants::lines)
+    {
+        this->game_over = 1;
+        return;
+    }
+    if (this->snake.positions.front().second >= Constants::columns)
+    {
+        this->game_over = 1;
+        return;
+    }
+    for (int i = 1; i < (int)this->snake.positions.size(); i++)
+        if (this->snake.positions.front() == this->snake.positions[i])
+        {
+            this->game_over = 1;
+            return;
+        }
+    if (canvas.is_disabled(this->snake.positions.front()))
+        this->game_over = 1;
+}
 
 // public functions:
 bool Game::is_running() const
@@ -139,11 +179,18 @@ bool Game::is_running() const
 void Game::update()
 {
     this->poll_events();
-    snake.move();
+    if (this->game_over)
+        this->reset();
+    this->snake.move();
+    check_game_over();
+    if (this->game_over)
+        this->reset();
 }
 
 void Game::render()
 {
+    this->rendered = 1;
+
     this->window->clear();
 
     // draw here

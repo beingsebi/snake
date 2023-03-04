@@ -18,6 +18,8 @@ class Game
     Canvas canvas;
     Snake snake;
     int score = 0;
+    bool game_over = 0;
+    bool rendered = 0;
 
     void poll_events();
     string get_high_score() const;
@@ -25,6 +27,7 @@ class Game
     void draw_snake();
     void draw_scores();
     void reset();
+    void check_game_over();
 
 public:
     Game();

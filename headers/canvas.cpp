@@ -21,3 +21,11 @@ Canvas::Canvas()
         }
     }
 }
+
+bool Canvas::is_disabled(const pair<int, int> &p) const
+{
+    for (const auto &i : this->disabled_cells)
+        if (i == p)
+            return 1;
+    return 0;
+}

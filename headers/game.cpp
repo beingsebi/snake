@@ -210,3 +210,12 @@ void Game::render()
     if (!this->moves.empty())
         this->snake.direction = this->moves.front(), this->moves.pop();
 }
+
+ostream &operator<<(ostream &os, const Game &game)
+{
+    os << game.canvas << '\n'
+       << game.snake << '\n';
+    os << "Score: " << game.score << '\n';
+
+    return os;
+}

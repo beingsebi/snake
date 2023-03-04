@@ -3,8 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <queue>
+#include <ostream>
 #include "canvas.hpp"
 #include "snake.hpp"
+using std::ostream;
 using std::queue;
 using std::string;
 using std::vector;
@@ -37,5 +39,6 @@ public:
     bool is_running() const;
     void update();
     void render();
+    friend ostream &operator<<(ostream &, const Game &);
 };
 #endif

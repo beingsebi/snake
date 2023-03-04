@@ -8,6 +8,7 @@ class Snake
 {
     vector<pair<int, int>> positions;
     int direction;
+    void move();
 
 public:
     Snake();

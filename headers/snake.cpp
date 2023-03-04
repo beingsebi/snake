@@ -53,3 +53,13 @@ void Snake::reset()
     this->~Snake();
     new (this) Snake();
 }
+
+void Snake::move()
+{
+    for (int i = this->positions.size() - 1; i >= 1; i--)
+        this->positions[i] = this->positions[i - 1];
+
+    this->positions.front().first += Constants::directions[this->direction].first;
+    this->positions.front().second += Constants::directions[this->direction].second;
+}
+// xxxxaxbc

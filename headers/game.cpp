@@ -139,6 +139,7 @@ bool Game::is_running() const
 void Game::update()
 {
     this->poll_events();
+    snake.move();
 }
 
 void Game::render()

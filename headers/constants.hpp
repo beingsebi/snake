@@ -2,7 +2,6 @@
 #define CONSTANTS_H
 
 #include <SFML/Graphics.hpp>
-#include <vector>
 struct Constants
 {
     static sf::Vector2f const cell_size;

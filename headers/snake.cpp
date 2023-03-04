@@ -1,7 +1,6 @@
 #include "snake.hpp"
 #include "constants.hpp"
 #include <random>
-#include <ctime>
 
 Snake::Snake()
 {

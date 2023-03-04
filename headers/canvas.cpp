@@ -1,7 +1,6 @@
 #include "canvas.hpp"
 #include "constants.hpp"
 #include <random>
-#include <ctime>
 
 Canvas::Canvas()
 {

@@ -2,7 +2,6 @@
 #define CELL_H
 
 #include <SFML/Graphics.hpp>
-#include <ostream>
 using std::ostream;
 
 class Cell

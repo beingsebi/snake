@@ -1,9 +1,8 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
-#include <vector>
-#include <utility>
 #include <ostream>
+#include <vector>
 using std::ostream;
 using std::pair;
 using std::vector;

@@ -3,8 +3,6 @@
 
 #include "cell.hpp"
 #include <vector>
-#include <utility>
-#include <ostream>
 using std::ostream;
 using std::pair;
 using std::vector;

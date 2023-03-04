@@ -29,3 +29,15 @@ bool Canvas::is_disabled(const pair<int, int> &p) const
             return 1;
     return 0;
 }
+
+ostream &operator<<(ostream &os, const Canvas &canv)
+{
+    os << "1 - free square;  0 - wall:\n";
+    for (const auto &i : canv.matrix)
+    {
+        for (const auto &j : i)
+            os << j.is_enabled() << ' ';
+        os << '\n';
+    }
+    return os;
+}

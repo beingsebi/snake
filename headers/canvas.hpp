@@ -4,8 +4,11 @@
 #include "cell.hpp"
 #include <vector>
 #include <utility>
+#include <ostream>
+using std::ostream;
 using std::pair;
 using std::vector;
+
 class Canvas
 {
     vector<vector<Cell>> matrix;
@@ -14,6 +17,7 @@ class Canvas
 public:
     Canvas();
     bool is_disabled(const pair<int, int> &) const;
+    friend ostream &operator<<(ostream &, const Canvas &);
     friend class Game;
 };
 

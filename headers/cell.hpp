@@ -2,6 +2,9 @@
 #define CELL_H
 
 #include <SFML/Graphics.hpp>
+#include <ostream>
+using std::ostream;
+
 class Cell
 {
     sf::RectangleShape rect;
@@ -12,6 +15,7 @@ public:
     void set_coords(const int &, const int &);
     void enable();
     void disable();
+    friend ostream &operator<<(ostream &, const Cell &);
     friend class Game;
 };
 

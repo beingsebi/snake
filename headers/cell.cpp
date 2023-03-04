@@ -42,3 +42,14 @@ void Cell::disable()
     this->rect.setFillColor(Constants::color4);
     this->rect.setOutlineColor(Constants::color4);
 }
+
+ostream &operator<<(ostream &os, const Cell &cell)
+{
+    os << "Top left coordinates: " << cell.rect.getPosition().x << "px " << cell.rect.getPosition().y << "px\n";
+    os << "Width " << cell.rect.getSize().x << "px   Height " << cell.rect.getSize().y << "px\n";
+    os << "Color rgba(" << static_cast<int>(cell.rect.getFillColor().r) << ",";
+    os << static_cast<int>(cell.rect.getFillColor().g) << ",";
+    os << static_cast<int>(cell.rect.getFillColor().b) << ",";
+    os << static_cast<int>(cell.rect.getFillColor().a) << ")\n";
+    return os;
+}

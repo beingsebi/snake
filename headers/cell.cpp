@@ -43,6 +43,10 @@ void Cell::disable()
     this->rect.setOutlineColor(Constants::color4);
 }
 
+bool Cell::is_enabled() const
+{
+    return enabled;
+}
 ostream &operator<<(ostream &os, const Cell &cell)
 {
     os << "Top left coordinates: " << cell.rect.getPosition().x << "px " << cell.rect.getPosition().y << "px\n";

@@ -105,6 +105,7 @@ void Game::draw_canvas()
         for (const auto &j : i)
             this->window->draw(j.rect);
 }
+
 string Game::get_high_score() const
 {
     static string s;

@@ -11,7 +11,7 @@ Game::Game() // constructor
     this->video_mode.height = 600 + 2 + 25;
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
-    this->window->setFramerateLimit(2);
+    this->window->setFramerateLimit(4);
 }
 
 Game::~Game() // destructor
@@ -23,6 +23,8 @@ Game::~Game() // destructor
 
 void Game::reset()
 {
+    while (!this->moves.empty())
+        this->moves.pop();
     game_over = 0;
     canvas.~Canvas();
     new (&canvas) Canvas();
@@ -51,30 +53,34 @@ void Game::poll_events()
 
             case sf::Keyboard::A:
             case sf::Keyboard::Left:
-                if (snake.direction == 3)
-                    game_over = 1;
-                snake.direction = 1;
+                if (this->moves.empty() && this->snake.direction != 1 && this->snake.direction != 3)
+                    this->moves.push(1);
+                else if (!this->moves.empty() && this->moves.back() != 1 && this->moves.back() != 3)
+                    this->moves.push(1);
                 break;
 
             case sf::Keyboard::W:
             case sf::Keyboard::Up:
-                if (snake.direction == 0)
-                    game_over = 1;
-                snake.direction = 2;
+                if (this->moves.empty() && this->snake.direction != 2 && this->snake.direction != 0)
+                    this->moves.push(2);
+                else if (!this->moves.empty() && this->moves.back() != 2 && this->moves.back() != 0)
+                    this->moves.push(2);
                 break;
 
             case sf::Keyboard::D:
             case sf::Keyboard::Right:
-                if (snake.direction == 1)
-                    game_over = 1;
-                snake.direction = 3;
+                if (this->moves.empty() && this->snake.direction != 3 && this->snake.direction != 1)
+                    this->moves.push(3);
+                else if (!this->moves.empty() && this->moves.back() != 3 && this->moves.back() != 1)
+                    this->moves.push(3);
                 break;
 
             case sf::Keyboard::S:
             case sf::Keyboard::Down:
-                if (snake.direction == 2)
-                    game_over = 1;
-                snake.direction = 0;
+                if (this->moves.empty() && this->snake.direction != 0 && this->snake.direction != 2)
+                    this->moves.push(0);
+                else if (!this->moves.empty() && this->moves.back() != 0 && this->moves.back() != 2)
+                    this->moves.push(0);
                 break;
 
             default:
@@ -189,8 +195,6 @@ void Game::update()
 
 void Game::render()
 {
-    this->rendered = 1;
-
     this->window->clear();
 
     // draw here
@@ -199,4 +203,6 @@ void Game::render()
     this->draw_scores();
     //
     this->window->display();
+    if (!this->moves.empty())
+        this->snake.direction = this->moves.front(), this->moves.pop();
 }

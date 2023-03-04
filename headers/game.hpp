@@ -2,8 +2,10 @@
 #define GAME_H
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <queue>
 #include "canvas.hpp"
 #include "snake.hpp"
+using std::queue;
 using std::string;
 using std::vector;
 
@@ -19,7 +21,7 @@ class Game
     Snake snake;
     int score = 0;
     bool game_over = 0;
-    bool rendered = 0;
+    queue<int> moves;
 
     void poll_events();
     string get_high_score() const;

@@ -62,4 +62,22 @@ void Snake::move()
     this->positions.front().first += Constants::directions[this->direction].first;
     this->positions.front().second += Constants::directions[this->direction].second;
 }
-// xxxxaxbc
+
+ostream &operator<<(ostream &os, const Snake &snake)
+{
+    os << "Snake head at line " << snake.positions.front().first << " and column " << snake.positions.front().second << '\n';
+    os << "Snake body: ";
+    for (int i = 1; i < (int)snake.positions.size(); i++)
+        os << "(" << snake.positions.at(i).first << "," << snake.positions.at(i).second << ")  ";
+    os << "\nSnake goes ";
+    if (snake.direction == 0)
+        os << "down";
+    if (snake.direction == 1)
+        os << "left";
+    if (snake.direction == 2)
+        os << "up";
+    if (snake.direction == 3)
+        os << "right";
+    os << '\n';
+    return os;
+}

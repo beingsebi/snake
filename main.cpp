@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "headers/game.hpp"
-// test
+
 int main()
 {
     Game game;

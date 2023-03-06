@@ -1,4 +1,4 @@
-#include "constants.hpp"
+#include "../headers/constants.hpp"
 #include <SFML/Graphics.hpp>
 
 sf::Vector2f const Constants::cell_size = sf::Vector2f(40.f, 40.f);

@@ -1,5 +1,5 @@
-#include "cell.hpp"
-#include "constants.hpp"
+#include "../headers/cell.hpp"
+#include "../headers/constants.hpp"
 
 #include <SFML/Graphics.hpp>
 

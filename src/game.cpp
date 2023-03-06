@@ -1,5 +1,5 @@
-#include "constants.hpp"
-#include "game.hpp"
+#include "../headers/constants.hpp"
+#include "../headers/game.hpp"
 #include <SFML/Graphics.hpp>
 #include <fstream>
 using std::ifstream;

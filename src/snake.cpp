@@ -8,7 +8,7 @@ Snake::Snake()
 };
 void Snake::init()
 {
-    std::mt19937 mt(time(nullptr));
+    static std::mt19937 mt(time(nullptr));
     switch (mt() % 8)
     {
     case 0:

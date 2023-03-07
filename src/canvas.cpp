@@ -4,7 +4,13 @@
 
 Canvas::Canvas()
 {
-    std::mt19937 mt(time(nullptr));
+    this->init();
+}
+void Canvas::init()
+{
+    this->matrix.clear();
+    this->disabled_cells.clear();
+    static std::mt19937 mt(time(nullptr));
     for (int i = 0, ax; i < Constants::lines; i++)
     {
         this->matrix.push_back(vector<Cell>());

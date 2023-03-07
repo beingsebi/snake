@@ -4,6 +4,10 @@
 
 Snake::Snake()
 {
+    this->init();
+};
+void Snake::init()
+{
     std::mt19937 mt(time(nullptr));
     switch (mt() % 8)
     {
@@ -40,7 +44,7 @@ Snake::Snake()
         this->direction = 2;
         break;
     }
-};
+}
 Snake::~Snake()
 {
     // std::cout << "Snake deleted" << std::endl;

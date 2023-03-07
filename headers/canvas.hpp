@@ -11,6 +11,7 @@ class Canvas
 {
     vector<vector<Cell>> matrix;
     vector<pair<int, int>> disabled_cells;
+    void init();
 
 public:
     Canvas();

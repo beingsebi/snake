@@ -26,10 +26,8 @@ void Game::reset()
     while (!this->moves.empty())
         this->moves.pop();
     game_over = 0;
-    canvas.~Canvas();
-    new (&canvas) Canvas();
-    snake.~Snake();
-    new (&snake) Snake();
+    this->canvas.init();
+    this->snake.init();
     score = 0;
 }
 

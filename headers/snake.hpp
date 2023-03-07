@@ -12,6 +12,7 @@ class Snake
     vector<pair<int, int>> positions;
     int direction;
     void move();
+    void init();
 
 public:
     Snake();

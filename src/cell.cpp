@@ -15,14 +15,6 @@ Cell::Cell(const int &x, const int &y, const bool b)
         this->enable();
     else
         this->disable();
-    //     {
-    //         this->rect.setFillColor(Constants::color1);
-    //     }
-    //     else
-    //     {
-    //         this->rect.setFillColor(Constants::color4);
-    //         this->rect.setOutlineThickness(0.f);
-    //     }
 }
 
 Cell Cell::operator=(const Cell &other)

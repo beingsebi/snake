@@ -33,6 +33,9 @@ class Game
     void reset();
     void check_game_over();
 
+    Game(const Game &) = delete;
+    Game operator=(const Game &) = delete;
+
 public:
     Game();
     ~Game();

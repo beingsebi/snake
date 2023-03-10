@@ -8,6 +8,7 @@ class Cell
 {
     sf::RectangleShape rect;
     bool enabled;
+    Cell operator=(const Cell &);
 
 public:
     Cell(const int &, const int &, const bool);

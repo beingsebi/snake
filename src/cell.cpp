@@ -25,6 +25,13 @@ Cell::Cell(const int &x, const int &y, const bool b)
     //     }
 }
 
+Cell Cell::operator=(const Cell &other)
+{
+    this->rect = other.rect;
+    this->enabled = other.enabled;
+    return *this;
+}
+
 void Cell::set_coords(const int &x, const int &y)
 {
     // Y FIRST, X SECOND !!!

@@ -56,6 +56,10 @@ void Game::poll_events()
                         this->moves.push(1);
                     else if (!this->moves.empty() && this->moves.back() != 1 && this->moves.back() != 3)
                         this->moves.push(1);
+                    else
+                        ;
+                else
+                    ;
                 break;
 
             case sf::Keyboard::W:
@@ -65,6 +69,10 @@ void Game::poll_events()
                         this->moves.push(2);
                     else if (!this->moves.empty() && this->moves.back() != 2 && this->moves.back() != 0)
                         this->moves.push(2);
+                    else
+                        ;
+                else
+                    ;
                 break;
 
             case sf::Keyboard::D:
@@ -74,6 +82,10 @@ void Game::poll_events()
                         this->moves.push(3);
                     else if (!this->moves.empty() && this->moves.back() != 3 && this->moves.back() != 1)
                         this->moves.push(3);
+                    else
+                        ;
+                else
+                    ;
                 break;
 
             case sf::Keyboard::S:
@@ -83,6 +95,10 @@ void Game::poll_events()
                         this->moves.push(0);
                     else if (!this->moves.empty() && this->moves.back() != 0 && this->moves.back() != 2)
                         this->moves.push(0);
+                    else
+                        ;
+                else
+                    ;
                 break;
 
             default:

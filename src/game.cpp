@@ -52,53 +52,45 @@ void Game::poll_events()
             case sf::Keyboard::A:
             case sf::Keyboard::Left:
                 if (this->moves.size() < 2)
+                {
                     if (this->moves.empty() && this->snake.direction != 1 && this->snake.direction != 3)
                         this->moves.push(1);
                     else if (!this->moves.empty() && this->moves.back() != 1 && this->moves.back() != 3)
                         this->moves.push(1);
-                    else
-                        ;
-                else
-                    ;
+                }
                 break;
 
             case sf::Keyboard::W:
             case sf::Keyboard::Up:
                 if (this->moves.size() < 2)
+                {
                     if (this->moves.empty() && this->snake.direction != 2 && this->snake.direction != 0)
                         this->moves.push(2);
                     else if (!this->moves.empty() && this->moves.back() != 2 && this->moves.back() != 0)
                         this->moves.push(2);
-                    else
-                        ;
-                else
-                    ;
+                }
                 break;
 
             case sf::Keyboard::D:
             case sf::Keyboard::Right:
                 if (this->moves.size() < 2)
+                {
                     if (this->moves.empty() && this->snake.direction != 3 && this->snake.direction != 1)
                         this->moves.push(3);
                     else if (!this->moves.empty() && this->moves.back() != 3 && this->moves.back() != 1)
                         this->moves.push(3);
-                    else
-                        ;
-                else
-                    ;
+                }
                 break;
 
             case sf::Keyboard::S:
             case sf::Keyboard::Down:
                 if (this->moves.size() < 2)
+                {
                     if (this->moves.empty() && this->snake.direction != 0 && this->snake.direction != 2)
                         this->moves.push(0);
                     else if (!this->moves.empty() && this->moves.back() != 0 && this->moves.back() != 2)
                         this->moves.push(0);
-                    else
-                        ;
-                else
-                    ;
+                }
                 break;
 
             default:

@@ -8,10 +8,10 @@ class Cell
 {
     sf::RectangleShape rect;
     bool enabled;
-    Cell() = delete;
-    Cell operator=(const Cell &);
 
 public:
+    Cell operator=(const Cell &);
+    Cell(const Cell &);
     Cell(const int &, const int &, const bool);
     void set_coords(const int &, const int &);
     void enable();

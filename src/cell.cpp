@@ -17,6 +17,10 @@ Cell::Cell(const int &x, const int &y, const bool b)
         this->disable();
 }
 
+Cell::Cell(const Cell &other) : rect{other.rect}, enabled{other.enabled}
+{
+}
+
 Cell Cell::operator=(const Cell &other)
 {
     this->rect = other.rect;

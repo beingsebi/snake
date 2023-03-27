@@ -1,9 +1,8 @@
-#include "../headers/constants.hpp"
 #include "../headers/game.hpp"
-#include <SFML/Graphics.hpp>
-#include <fstream>
+#ifndef ecd
+#define ecd Constants::Directions
+#endif
 using std::ifstream;
-
 Game::Game() // constructor
 {
     this->font.loadFromFile("files/Roboto.ttf");
@@ -54,10 +53,10 @@ void Game::poll_events()
             case sf::Keyboard::Left:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 1 && this->snake.direction != 3)
-                        this->moves.push(1);
-                    else if (!this->moves.empty() && this->moves.back() != 1 && this->moves.back() != 3)
-                        this->moves.push(1);
+                    if (this->moves.empty() && this->snake.direction != 1 && this->snake.direction != ecd::right)
+                        this->moves.push(ecd::left);
+                    else if (!this->moves.empty() && this->moves.back() != 1 && this->moves.back() != ecd::right)
+                        this->moves.push(ecd::left);
                 }
                 break;
 
@@ -65,10 +64,10 @@ void Game::poll_events()
             case sf::Keyboard::Up:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 2 && this->snake.direction != 0)
-                        this->moves.push(2);
-                    else if (!this->moves.empty() && this->moves.back() != 2 && this->moves.back() != 0)
-                        this->moves.push(2);
+                    if (this->moves.empty() && this->snake.direction != 2 && this->snake.direction != ecd::down)
+                        this->moves.push(ecd::up);
+                    else if (!this->moves.empty() && this->moves.back() != 2 && this->moves.back() != ecd::down)
+                        this->moves.push(ecd::up);
                 }
                 break;
 
@@ -76,10 +75,10 @@ void Game::poll_events()
             case sf::Keyboard::Right:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 3 && this->snake.direction != 1)
-                        this->moves.push(3);
-                    else if (!this->moves.empty() && this->moves.back() != 3 && this->moves.back() != 1)
-                        this->moves.push(3);
+                    if (this->moves.empty() && this->snake.direction != 3 && this->snake.direction != ecd::left)
+                        this->moves.push(ecd::right);
+                    else if (!this->moves.empty() && this->moves.back() != 3 && this->moves.back() != ecd::left)
+                        this->moves.push(ecd::right);
                 }
                 break;
 
@@ -87,10 +86,10 @@ void Game::poll_events()
             case sf::Keyboard::Down:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 0 && this->snake.direction != 2)
-                        this->moves.push(0);
-                    else if (!this->moves.empty() && this->moves.back() != 0 && this->moves.back() != 2)
-                        this->moves.push(0);
+                    if (this->moves.empty() && this->snake.direction != 0 && this->snake.direction != ecd::up)
+                        this->moves.push(ecd::down);
+                    else if (!this->moves.empty() && this->moves.back() != 0 && this->moves.back() != ecd::up)
+                        this->moves.push(ecd::down);
                 }
                 break;
 

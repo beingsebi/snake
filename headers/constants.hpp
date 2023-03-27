@@ -16,6 +16,14 @@ struct Constants
     static int const lines;
     static int const columns;
     static std::vector<std::pair<int, int>> const directions;
+
+    enum Directions
+    {
+        down,
+        left,
+        up,
+        right
+    };
 };
 
 #endif

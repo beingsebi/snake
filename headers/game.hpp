@@ -1,11 +1,14 @@
 #ifndef GAME_H
 #define GAME_H
+
+#include "constants.hpp"
+#include "canvas.hpp"
+#include "snake.hpp"
 #include <SFML/Graphics.hpp>
+#include <fstream>
 #include <vector>
 #include <queue>
 #include <ostream>
-#include "canvas.hpp"
-#include "snake.hpp"
 using std::ostream;
 using std::queue;
 using std::string;

@@ -158,22 +158,11 @@ void Game::draw_scores()
 }
 void Game::check_game_over()
 {
-    if (this->snake.positions.front().first < 0)
-    {
-        this->game_over = 1;
-        return;
-    }
-    if (this->snake.positions.front().second < 0)
-    {
-        this->game_over = 1;
-        return;
-    }
-    if (this->snake.positions.front().first >= Constants::lines)
-    {
-        this->game_over = 1;
-        return;
-    }
-    if (this->snake.positions.front().second >= Constants::columns)
+    if (this->snake.positions.front().first < 0 ||
+        this->snake.positions.front().second < 0 ||
+        this->snake.positions.front().first >= Constants::lines ||
+        this->snake.positions.front().second >= Constants::columns ||
+        canvas.is_disabled(this->snake.positions.front()))
     {
         this->game_over = 1;
         return;
@@ -184,8 +173,6 @@ void Game::check_game_over()
             this->game_over = 1;
             return;
         }
-    if (canvas.is_disabled(this->snake.positions.front()))
-        this->game_over = 1;
 }
 
 // public functions:

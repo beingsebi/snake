@@ -26,7 +26,7 @@ env:
   BUILD_DIR: "build"
   EXT_DIR: "ext"
   BIN_DIR: "bin"
-  APP_WINDOW: "My Window"
+  APP_WINDOW: "Snake game"
 
 defaults:
   run:

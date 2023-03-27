@@ -9,7 +9,7 @@ Cell::Cell(const int &x, const int &y, const bool b)
     this->set_coords(x, y);
     this->enabled = b;
 
-    this->rect.setOutlineColor(Constants::color3);
+    this->rect.setOutlineColor(Constants::border_color);
     this->rect.setOutlineThickness(1.f);
     if (b)
         this->enable();
@@ -40,8 +40,8 @@ void Cell::enable()
     this->enabled = 1;
     this->rect.setOutlineThickness(1.f);
 
-    this->rect.setFillColor(Constants::color1);
-    this->rect.setOutlineColor(Constants::color3);
+    this->rect.setFillColor(Constants::cell_color);
+    this->rect.setOutlineColor(Constants::border_color);
 }
 
 void Cell::disable()
@@ -49,8 +49,8 @@ void Cell::disable()
     this->enabled = 0;
     this->rect.setOutlineThickness(0.f);
 
-    this->rect.setFillColor(Constants::color4);
-    this->rect.setOutlineColor(Constants::color4);
+    this->rect.setFillColor(Constants::disabled_color);
+    this->rect.setOutlineColor(Constants::disabled_color);
 }
 
 bool Cell::is_enabled() const

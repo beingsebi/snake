@@ -9,6 +9,7 @@ Game::Game() // constructor
     this->font.loadFromFile("files/Roboto.ttf");
     this->video_mode.width = 800 + 2;
     this->video_mode.height = 600 + 2 + 25;
+    // height + border + text
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
     this->window->setFramerateLimit(4);
@@ -130,7 +131,7 @@ void Game::draw_snake()
                      static_cast<float>(1 + snake.positions[0].first * Constants::cell_size.x));
     this->window->draw(rect);
 
-    rect.setFillColor(Constants::color5);
+    rect.setFillColor(Constants::head_color);
     for (int i = 1; i < (int)this->snake.positions.size(); i++)
     {
         rect.setPosition(static_cast<float>(1 + snake.positions[i].second * Constants::cell_size.y),
@@ -214,10 +215,14 @@ void Game::render()
     this->draw_scores();
     //
     this->window->display();
+    this->update_snake();
+}
+
+void Game::update_snake()
+{
     if (!this->moves.empty())
         this->snake.direction = this->moves.front(), this->moves.pop();
 }
-
 ostream &operator<<(ostream &os, const Game &game)
 {
     os << game.canvas << '\n'

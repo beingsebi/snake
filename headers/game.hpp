@@ -32,6 +32,7 @@ class Game
     void draw_scores();
     void reset();
     void check_game_over();
+    void update_snake();
 
     Game(const Game &) = delete;
     Game operator=(const Game &) = delete;

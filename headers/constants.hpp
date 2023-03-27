@@ -6,11 +6,11 @@ struct Constants
 {
     static sf::Vector2f const cell_size;
 
-    static sf::Color const color1;
+    static sf::Color const cell_color;
     static sf::Color const color2;
-    static sf::Color const color3;
-    static sf::Color const color4;
-    static sf::Color const color5;
+    static sf::Color const border_color;
+    static sf::Color const disabled_color;
+    static sf::Color const head_color;
     static sf::Color const color6;
 
     static int const lines;

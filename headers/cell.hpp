@@ -2,6 +2,7 @@
 #define CELL_H
 
 #include <SFML/Graphics.hpp>
+#include "constants.hpp"
 using std::ostream;
 
 class Cell

@@ -1,7 +1,4 @@
 #include "../headers/cell.hpp"
-#include "../headers/constants.hpp"
-
-#include <SFML/Graphics.hpp>
 
 Cell::Cell(const int &x, const int &y, const bool b)
 {

@@ -1,6 +1,4 @@
 #include "../headers/canvas.hpp"
-#include "../headers/constants.hpp"
-#include <random>
 
 Canvas::Canvas()
 {

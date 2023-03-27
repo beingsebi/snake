@@ -1,6 +1,4 @@
 #include "../headers/snake.hpp"
-#include "../headers/constants.hpp"
-#include <random>
 
 Snake::Snake()
 {

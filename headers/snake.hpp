@@ -1,6 +1,8 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
+#include "constants.hpp"
+#include <random>
 #include <ostream>
 #include <vector>
 using std::ostream;

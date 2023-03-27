@@ -2,6 +2,8 @@
 #define CANVAS_H
 
 #include "cell.hpp"
+#include "constants.hpp"
+#include <random>
 #include <vector>
 using std::ostream;
 using std::pair;

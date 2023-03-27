@@ -10,8 +10,8 @@ struct Constants
     static sf::Color const color2;
     static sf::Color const border_color;
     static sf::Color const disabled_color;
+    static sf::Color const body_color;
     static sf::Color const head_color;
-    static sf::Color const color6;
 
     static int const lines;
     static int const columns;

@@ -126,12 +126,12 @@ void Game::draw_snake()
     static sf::RectangleShape rect;
     rect.setSize(Constants::cell_size);
     rect.setOutlineThickness(0.f);
-    rect.setFillColor(Constants::color6);
+    rect.setFillColor(Constants::head_color);
     rect.setPosition(static_cast<float>(1 + snake.positions[0].second * Constants::cell_size.y),
                      static_cast<float>(1 + snake.positions[0].first * Constants::cell_size.x));
     this->window->draw(rect);
 
-    rect.setFillColor(Constants::head_color);
+    rect.setFillColor(Constants::body_color);
     for (int i = 1; i < (int)this->snake.positions.size(); i++)
     {
         rect.setPosition(static_cast<float>(1 + snake.positions[i].second * Constants::cell_size.y),

@@ -71,7 +71,7 @@ int Snake::get_direction() const
 
 pair<int, int> &Snake::operator[](const size_t x)
 {
-    assert(0 <= x && x < this->positions.size());
+    assert(/*0 <= x &&*/ x < this->positions.size());
     return this->positions[x];
 }
 

@@ -64,6 +64,37 @@ void Snake::move()
     this->positions.front().second += Constants::directions[this->direction].second;
 }
 
+int Snake::get_direction() const
+{
+    return this->direction;
+}
+
+pair<int, int> &Snake::operator[](const size_t x)
+{
+    assert(0 <= x && x < this->positions.size());
+    return this->positions[x];
+}
+
+bool Snake::is_outside() const
+{
+    if (this->positions.front().first < 0 ||
+        this->positions.front().second < 0 ||
+        this->positions.front().first >= Constants::lines ||
+        this->positions.front().second >= Constants::columns)
+        return 1;
+    return 0;
+}
+
+void Snake::set_direction(const int &x)
+{
+    this->direction = x;
+}
+
+size_t Snake::getp_size() const
+{
+    return this->positions.size();
+}
+
 ostream &operator<<(ostream &os, const Snake &snake)
 {
     os << "Snake head at line " << snake.positions.front().first << " and column " << snake.positions.front().second << '\n';

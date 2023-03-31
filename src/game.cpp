@@ -53,7 +53,7 @@ void Game::poll_events()
             case sf::Keyboard::Left:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 1 && this->snake.direction != ecd::right)
+                    if (this->moves.empty() && this->snake.get_direction() != 1 && this->snake.get_direction() != ecd::right)
                         this->moves.push(ecd::left);
                     else if (!this->moves.empty() && this->moves.back() != 1 && this->moves.back() != ecd::right)
                         this->moves.push(ecd::left);
@@ -64,7 +64,7 @@ void Game::poll_events()
             case sf::Keyboard::Up:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 2 && this->snake.direction != ecd::down)
+                    if (this->moves.empty() && this->snake.get_direction() != 2 && this->snake.get_direction() != ecd::down)
                         this->moves.push(ecd::up);
                     else if (!this->moves.empty() && this->moves.back() != 2 && this->moves.back() != ecd::down)
                         this->moves.push(ecd::up);
@@ -75,7 +75,7 @@ void Game::poll_events()
             case sf::Keyboard::Right:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 3 && this->snake.direction != ecd::left)
+                    if (this->moves.empty() && this->snake.get_direction() != 3 && this->snake.get_direction() != ecd::left)
                         this->moves.push(ecd::right);
                     else if (!this->moves.empty() && this->moves.back() != 3 && this->moves.back() != ecd::left)
                         this->moves.push(ecd::right);
@@ -86,7 +86,7 @@ void Game::poll_events()
             case sf::Keyboard::Down:
                 if (this->moves.size() < 2)
                 {
-                    if (this->moves.empty() && this->snake.direction != 0 && this->snake.direction != ecd::up)
+                    if (this->moves.empty() && this->snake.get_direction() != 0 && this->snake.get_direction() != ecd::up)
                         this->moves.push(ecd::down);
                     else if (!this->moves.empty() && this->moves.back() != 0 && this->moves.back() != ecd::up)
                         this->moves.push(ecd::down);
@@ -126,15 +126,15 @@ void Game::draw_snake()
     rect.setSize(Constants::cell_size);
     rect.setOutlineThickness(0.f);
     rect.setFillColor(Constants::head_color);
-    rect.setPosition(static_cast<float>(1 + snake.positions[0].second * Constants::cell_size.y),
-                     static_cast<float>(1 + snake.positions[0].first * Constants::cell_size.x));
+    rect.setPosition(static_cast<float>(1 + snake[0].second * Constants::cell_size.y),
+                     static_cast<float>(1 + snake[0].first * Constants::cell_size.x));
     this->window->draw(rect);
 
     rect.setFillColor(Constants::body_color);
-    for (int i = 1; i < (int)this->snake.positions.size(); i++)
+    for (int i = 1; i < (int)this->snake.getp_size(); i++)
     {
-        rect.setPosition(static_cast<float>(1 + snake.positions[i].second * Constants::cell_size.y),
-                         static_cast<float>(1 + snake.positions[i].first * Constants::cell_size.x));
+        rect.setPosition(static_cast<float>(1 + snake[i].second * Constants::cell_size.y),
+                         static_cast<float>(1 + snake[i].first * Constants::cell_size.x));
         this->window->draw(rect);
     }
 }
@@ -157,17 +157,18 @@ void Game::draw_scores()
 }
 void Game::check_game_over()
 {
-    if (this->snake.positions.front().first < 0 ||
-        this->snake.positions.front().second < 0 ||
-        this->snake.positions.front().first >= Constants::lines ||
-        this->snake.positions.front().second >= Constants::columns ||
-        canvas.is_disabled(this->snake.positions.front()))
+    if (this->snake.is_outside())
     {
         this->game_over = 1;
         return;
     }
-    for (int i = 1; i < (int)this->snake.positions.size(); i++)
-        if (this->snake.positions.front() == this->snake.positions[i])
+    if (canvas.is_disabled(this->snake[0]))
+    {
+        this->game_over = 1;
+        return;
+    }
+    for (int i = 1; i < (int)this->snake.getp_size(); i++)
+        if (this->snake[0] == this->snake[i])
         {
             this->game_over = 1;
             return;
@@ -207,7 +208,7 @@ void Game::render()
 void Game::update_snake()
 {
     if (!this->moves.empty())
-        this->snake.direction = this->moves.front(), this->moves.pop();
+        this->snake.set_direction(this->moves.front()), this->moves.pop();
 }
 ostream &operator<<(ostream &os, const Game &game)
 {

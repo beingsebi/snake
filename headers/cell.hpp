@@ -11,7 +11,7 @@ class Cell
     bool enabled;
 
 public:
-    Cell operator=(const Cell &);
+    // Cell operator=(const Cell &);
     Cell(const Cell &);
     Cell(const int &, const int &, const bool);
     void set_coords(const int &, const int &);

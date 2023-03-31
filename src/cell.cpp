@@ -18,12 +18,12 @@ Cell::Cell(const Cell &other) : rect{other.rect}, enabled{other.enabled}
 {
 }
 
-Cell Cell::operator=(const Cell &other)
-{
-    this->rect = other.rect;
-    this->enabled = other.enabled;
-    return *this;
-}
+// Cell Cell::operator=(const Cell &other)
+// {
+//     this->rect = other.rect;
+//     this->enabled = other.enabled;
+//     return *this;
+// }
 
 void Cell::set_coords(const int &x, const int &y)
 {

@@ -12,7 +12,7 @@ void Canvas::init()
     for (int i = 0, ax; i < Constants::lines; i++)
     {
         this->matrix.push_back(vector<Cell>());
-        matrix.back().reserve(Constants::columns);
+        // matrix.back().reserve(Constants::columns);
         for (int j = 0; j < Constants::columns; j++)
         {
             ax = (((mt() % 11) != 0) | (i == 0) | (j == 0) | (i == Constants::lines - 1) | (j == Constants::columns - 1));

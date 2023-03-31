@@ -15,11 +15,11 @@ public:
     Cell(const Cell &);
     Cell(const int &, const int &, const bool);
     void set_coords(const int &, const int &);
+    sf::RectangleShape get_rect() const;
     void enable();
     void disable();
     bool is_enabled() const;
     friend ostream &operator<<(ostream &, const Cell &);
-    friend class Game;
 };
 
 #endif

@@ -41,6 +41,11 @@ void Cell::enable()
     this->rect.setOutlineColor(Constants::border_color);
 }
 
+sf::RectangleShape Cell::get_rect() const
+{
+    return this->rect;
+}
+
 void Cell::disable()
 {
     this->enabled = 0;

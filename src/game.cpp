@@ -109,7 +109,7 @@ void Game::draw_canvas()
 {
     for (const auto &i : this->canvas.get_matrix())
         for (const auto &j : i)
-            this->window->draw(j.rect);
+            this->window->draw(j.get_rect());
 }
 
 string Game::get_high_score() const

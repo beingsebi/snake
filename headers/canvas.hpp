@@ -13,13 +13,13 @@ class Canvas
 {
     vector<vector<Cell>> matrix;
     vector<pair<int, int>> disabled_cells;
-    void init();
 
 public:
     Canvas();
+    void init();
+    vector<vector<Cell>> get_matrix() const;
     bool is_disabled(const pair<int, int> &) const;
     friend ostream &operator<<(ostream &, const Canvas &);
-    friend class Game;
 };
 
 #endif

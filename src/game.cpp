@@ -107,7 +107,7 @@ void Game::poll_events()
 
 void Game::draw_canvas()
 {
-    for (const auto &i : this->canvas.matrix)
+    for (const auto &i : this->canvas.get_matrix())
         for (const auto &j : i)
             this->window->draw(j.rect);
 }

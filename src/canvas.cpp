@@ -44,3 +44,8 @@ ostream &operator<<(ostream &os, const Canvas &canv)
     }
     return os;
 }
+
+vector<vector<Cell>> Canvas::get_matrix() const
+{
+    return this->matrix;
+}

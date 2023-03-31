@@ -26,7 +26,6 @@ public:
     bool is_outside() const;
     size_t getp_size() const;
     friend ostream &operator<<(ostream &, const Snake &);
-    // friend class Game;
     pair<int, int> &operator[](size_t);
 };
 

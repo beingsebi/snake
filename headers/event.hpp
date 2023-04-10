@@ -3,6 +3,7 @@
 
 class event
 {
+public:
 };
 
 class flower : public event

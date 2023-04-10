@@ -142,6 +142,14 @@ void Game::draw_snake()
 
 void Game::draw_events()
 {
+    sf::Sprite sprite;
+    sf::Texture texture;
+    if (!texture.loadFromFile("files/key.png"))
+    {
+    }
+    sprite.setTexture(texture);
+    sprite.setScale(1.6f, 1.6f);
+    this->window->draw(sprite);
 }
 
 void Game::draw_scores()

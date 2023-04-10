@@ -3,6 +3,7 @@
 #define ecd Constants::Directions
 #endif
 using std::ifstream;
+
 Game::Game() // constructor
 {
     this->font.loadFromFile("files/Roboto.ttf");
@@ -139,6 +140,10 @@ void Game::draw_snake()
     }
 }
 
+void Game::draw_events()
+{
+}
+
 void Game::draw_scores()
 {
     this->text_score.setFont(this->font);
@@ -199,6 +204,7 @@ void Game::render()
     // draw here
     this->draw_canvas();
     this->draw_snake();
+    this->draw_events();
     this->draw_scores();
     //
     this->window->display();

@@ -32,6 +32,7 @@ class Game
     string get_high_score() const;
     void draw_canvas();
     void draw_snake();
+    void draw_events();
     void draw_scores();
     void reset();
     void check_game_over();

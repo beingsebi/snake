@@ -4,6 +4,7 @@ Canvas::Canvas()
 {
     this->init();
 }
+
 void Canvas::init()
 {
     this->matrix.clear();

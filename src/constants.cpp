@@ -12,5 +12,14 @@ sf::Color const Constants::body_color = sf::Color(153, 255, 51, 255);
 sf::Color const Constants::head_color = sf::Color(51, 204, 30, 255);
 // sf::Color const Constants::color2 = sf::Color(57, 62, 70, 255);
 
-std::vector<std::pair<int, int>> const Constants::directions = {{1, 0}, {0, -1}, {-1, 0}, {0, 1}};
+vector<pair<int, int>> const Constants::directions = {{1, 0}, {0, -1}, {-1, 0}, {0, 1}};
 //                                                              jos      stanga    sus    dreapta
+vector<string> const Constants::ev_paths = {
+    "files/apple.png",
+    "files/watermelon.png",
+    "files/pear.png",
+    "files/key.png",
+    "files/flower_red.png",
+    "files/flower_yellow.png",
+    "files/flower_purple.png",
+};

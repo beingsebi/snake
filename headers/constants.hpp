@@ -2,6 +2,9 @@
 #define CONSTANTS_H
 
 #include <SFML/Graphics.hpp>
+using std::pair;
+using std::string;
+using std::vector;
 
 struct Constants
 {
@@ -16,7 +19,8 @@ struct Constants
 
     static int const lines;
     static int const columns;
-    static std::vector<std::pair<int, int>> const directions;
+    static vector<pair<int, int>> const directions;
+    static vector<string> const ev_paths;
 
     enum Directions
     {
@@ -24,6 +28,17 @@ struct Constants
         left,
         up,
         right
+    };
+
+    enum Events
+    {
+        apple,
+        watermelon,
+        pear,
+        key,
+        redf,
+        yellowf,
+        purplef
     };
 };
 

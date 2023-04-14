@@ -1,5 +1,7 @@
 #ifndef EVENT_H
 #define EVENT_H
+#include "cell.hpp"
+#include "canvas.hpp"
 #include <string>
 #include <iostream>
 using std::pair;
@@ -14,7 +16,7 @@ protected:
 
 public:
     virtual ~Event() = default;
-    virtual void actiune() = 0;
+    virtual void actiune(Canvas &) = 0;
     Event() = default;
     pair<int, int> get_pos() const;
     pair<int, int> get_offset() const;
@@ -27,7 +29,7 @@ class Fruit : public Event
     int to_add;
 
 public:
-    void actiune() override;
+    void actiune(Canvas &) override;
     virtual ~Fruit() = default;
     Fruit() = default;
     Fruit(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
@@ -39,7 +41,7 @@ class Flower : public Event
     int theme;
 
 public:
-    void actiune() override;
+    void actiune(Canvas &) override;
     void bonus();
     virtual ~Flower() = default;
     Flower() = default;
@@ -51,7 +53,7 @@ class Key : public Event
 
 public:
     virtual ~Key() = default;
-    void actiune() override;
+    void actiune(Canvas &) override;
     Key() = default;
     Key(const pair<int, int> &, const pair<int, int> &, const string &, const float);
 };

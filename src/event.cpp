@@ -15,19 +15,19 @@ pair<int, int> Event::get_offset() const { return this->offset; }
 string Event::get_path() const { return this->path; }
 float Event::get_scale() const { return this->scale; }
 
-void Flower::actiune()
+void Flower::actiune(Canvas &g)
 {
     std::cout << "floare" << std::endl;
 }
 
-void Fruit::actiune()
+void Fruit::actiune(Canvas &g)
 {
     std::cout << "fruct" << std::endl;
 }
 
-void Key::actiune()
+void Key::actiune(Canvas &g)
 {
-    std::cout << "cheie" << std::endl;
+    g.enable_rcell();
 }
 
 void Flower::bonus()

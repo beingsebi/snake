@@ -39,7 +39,7 @@ void Game::init_ev()
         vxr.push_back(3);
 
     guess = vxr[mt() % vxr.size()];
-
+    guess = 1;
     if (guess == 1)
     {
         off = {9, 0};
@@ -306,7 +306,7 @@ void Game::check_event()
     if (this->s_ev.get()->get_pos() != this->snake[0])
         return;
 
-    this->s_ev.get()->actiune();
+    this->s_ev.get()->actiune(this->canvas);
     if (auto *c = dynamic_cast<Flower *>(this->s_ev.get()))
         c->bonus();
 

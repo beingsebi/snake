@@ -71,3 +71,10 @@ pair<int, int> Canvas::getr_enabled() const
             return p;
     }
 }
+
+void Canvas::enable_rcell()
+{
+    auto c = this->disabled_cells.back();
+    this->matrix[c.first][c.second].enable();
+    this->disabled_cells.pop_back();
+}

@@ -6,17 +6,18 @@ using std::string;
 class Event
 {
 protected:
-    pair<int, int> pos;
+    pair<int, int> pos, offset;
     string path;
     float scale;
 
     virtual void actiune() = 0;
-    Event(const pair<int, int> &, const string &, const float);
+    Event(const pair<int, int> &, const pair<int, int> &, const string &, const float);
 
 public:
     virtual ~Event() = default;
     Event() = default;
     pair<int, int> get_pos() const;
+    pair<int, int> get_offset() const;
     string get_path() const;
     float get_scale() const;
 };
@@ -29,7 +30,7 @@ class Fruit : public Event
 public:
     virtual ~Fruit() = default;
     Fruit() = default;
-    Fruit(const pair<int, int> &, const string &, const float, const int);
+    Fruit(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
 };
 
 class Flower : public Event
@@ -42,7 +43,7 @@ class Flower : public Event
 public:
     virtual ~Flower() = default;
     Flower() = default;
-    Flower(const pair<int, int> &, const string &, const float, const int);
+    Flower(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
 };
 
 class Key : public Event
@@ -52,7 +53,7 @@ public:
     virtual ~Key() = default;
     void actiune() override{};
     Key() = default;
-    Key(const pair<int, int> &, const string &, const float);
+    Key(const pair<int, int> &, const pair<int, int> &, const string &, const float);
 };
 
 #endif

@@ -19,34 +19,60 @@ Game::Game() // constructor
 
 void Game::init_ev()
 {
-    static const int p_k = 0, p_fl = 3, p_fr = 9;
+    static int p_k = 1, p_fl = 3, p_fr = 4;
+    if (this->canvas.getr_disabled() == Constants::NO_DISABLED)
+        p_k = 0;
+    vector<int> vxr;
     static mt19937 mt(time(nullptr));
     static int guess;
     float scl;
-    guess = mt() % 10;
-    static pair<int, int> pz;
+    static pair<int, int> pz, off;
     static string pth;
 
     pz = this->canvas.getr_enabled();
-    if (guess <= p_k)
+
+    for (int i = 1; i <= p_k; i++)
+        vxr.push_back(1);
+    for (int i = 1; i <= p_fl; i++)
+        vxr.push_back(2);
+    for (int i = 1; i <= p_fr; i++)
+        vxr.push_back(3);
+
+    guess = vxr[mt() % vxr.size()];
+
+    if (guess == 1)
     {
+        off = {9, 0};
         pth = Constants::ev_paths[Constants::key];
         scl = 1.5f;
-        this->s_ev = make_unique<Key>(pz, pth, scl);
+        this->s_ev = make_unique<Key>(pz, off, pth, scl);
     }
-    else if (guess <= p_fl)
+    else if (guess == 2)
     {
         guess = mt() % 3;
         pth = Constants::ev_paths[4 + guess];
         scl = 1.6f;
-        this->s_ev = make_unique<Flower>(pz, pth, scl, 1);
+        off = {2, 4};
+        this->s_ev = make_unique<Flower>(pz, off, pth, scl, 1);
     }
     else /*if (guess <= p_fr)*/
     {
         guess = mt() % 3;
+        switch (guess)
+        {
+        case 0:
+            off = {6, 5};
+            break;
+        case 1:
+            off = {10, -2};
+            break;
+        case 2:
+            off = {2, 4};
+            break;
+        }
         pth = Constants::ev_paths[guess];
         scl = 1.5f;
-        this->s_ev = make_unique<Fruit>(pz, pth, scl, 1);
+        this->s_ev = make_unique<Fruit>(pz, off, pth, scl, 1);
     }
 }
 
@@ -176,7 +202,7 @@ void Game::draw_snake()
 
 void Game::draw_event()
 {
-    static pair<int, int> ax;
+    static pair<int, int> ax1, ax2;
     sf::Sprite sprite;
     sf::Texture texture;
     if (!texture.loadFromFile(this->s_ev.get()->get_path()))
@@ -184,8 +210,10 @@ void Game::draw_event()
     }
     sprite.setTexture(texture);
     sprite.setScale(this->s_ev.get()->get_scale(), this->s_ev.get()->get_scale());
-    ax = this->s_ev.get()->get_pos();
-    sprite.setPosition(ax.second * Constants::cell_size.y, ax.first * Constants ::cell_size.x);
+    ax1 = this->s_ev.get()->get_pos();
+    ax2 = this->s_ev.get()->get_offset();
+    sprite.setPosition(ax2.second + ax1.second * Constants::cell_size.y,
+                       ax2.first + ax1.first * Constants ::cell_size.x);
     this->window->draw(sprite);
 }
 

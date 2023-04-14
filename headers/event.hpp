@@ -1,6 +1,7 @@
 #ifndef EVENT_H
 #define EVENT_H
 #include <string>
+#include <iostream>
 using std::pair;
 using std::string;
 class Event
@@ -9,12 +10,11 @@ protected:
     pair<int, int> pos, offset;
     string path;
     float scale;
-
-    virtual void actiune() = 0;
     Event(const pair<int, int> &, const pair<int, int> &, const string &, const float);
 
 public:
     virtual ~Event() = default;
+    virtual void actiune() = 0;
     Event() = default;
     pair<int, int> get_pos() const;
     pair<int, int> get_offset() const;
@@ -25,9 +25,9 @@ public:
 class Fruit : public Event
 {
     int to_add;
-    void actiune() override{};
 
 public:
+    void actiune() override;
     virtual ~Fruit() = default;
     Fruit() = default;
     Fruit(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
@@ -37,10 +37,10 @@ class Flower : public Event
 {
     static int count;
     int theme;
-    void actiune() override{};
-    void bonus(){};
 
 public:
+    void actiune() override;
+    void bonus();
     virtual ~Flower() = default;
     Flower() = default;
     Flower(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
@@ -51,7 +51,7 @@ class Key : public Event
 
 public:
     virtual ~Key() = default;
-    void actiune() override{};
+    void actiune() override;
     Key() = default;
     Key(const pair<int, int> &, const pair<int, int> &, const string &, const float);
 };

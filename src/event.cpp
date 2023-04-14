@@ -14,3 +14,23 @@ pair<int, int> Event::get_pos() const { return this->pos; }
 pair<int, int> Event::get_offset() const { return this->offset; }
 string Event::get_path() const { return this->path; }
 float Event::get_scale() const { return this->scale; }
+
+void Flower::actiune()
+{
+    std::cout << "floare" << std::endl;
+}
+
+void Fruit::actiune()
+{
+    std::cout << "fruct" << std::endl;
+}
+
+void Key::actiune()
+{
+    std::cout << "cheie" << std::endl;
+}
+
+void Flower::bonus()
+{
+    std::cout << "bonus" << std::endl;
+}

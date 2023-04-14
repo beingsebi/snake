@@ -5,7 +5,8 @@
 using std::ifstream;
 using std::make_unique;
 using std::mt19937;
-Game::Game() // constructor
+
+Game::Game()
 {
     this->font.loadFromFile("files/Roboto.ttf");
     this->video_mode.width = 800 + 2;
@@ -268,6 +269,7 @@ void Game::update()
         this->reset();
     this->snake.move();
     check_game_over();
+    check_event();
     if (this->game_over)
         this->reset();
 }
@@ -297,4 +299,16 @@ ostream &operator<<(ostream &os, const Game &game)
        << game.snake << '\n';
     os << "Score: " << game.score << '\n';
     return os;
+}
+
+void Game::check_event()
+{
+    if (this->s_ev.get()->get_pos() != this->snake[0])
+        return;
+
+    this->s_ev.get()->actiune();
+    if (auto *c = dynamic_cast<Flower *>(this->s_ev.get()))
+        c->bonus();
+
+    this->init_ev();
 }

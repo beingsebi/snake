@@ -44,7 +44,7 @@ class Game
     void reset();
     void check_game_over();
     void update_snake();
-
+    void check_event();
     Game(const Game &) = delete;
     Game operator=(const Game &) = delete;
 

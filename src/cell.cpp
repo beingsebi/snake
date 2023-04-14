@@ -16,13 +16,6 @@ Cell::Cell(const int &x, const int &y, const bool b)
 
 Cell::Cell(const Cell &other) : rect{other.rect}, enabled{other.enabled} {}
 
-// Cell Cell::operator=(const Cell &other)
-// {
-//     this->rect = other.rect;
-//     this->enabled = other.enabled;
-//     return *this;
-// }
-
 void Cell::set_coords(const int &x, const int &y)
 {
     // Y FIRST, X SECOND !!!
@@ -39,11 +32,6 @@ void Cell::enable()
     this->rect.setOutlineColor(Constants::border_color);
 }
 
-sf::RectangleShape Cell::get_rect() const
-{
-    return this->rect;
-}
-
 void Cell::disable()
 {
     this->enabled = 0;
@@ -51,6 +39,11 @@ void Cell::disable()
 
     this->rect.setFillColor(Constants::disabled_color);
     this->rect.setOutlineColor(Constants::disabled_color);
+}
+
+sf::RectangleShape Cell::get_rect() const
+{
+    return this->rect;
 }
 
 bool Cell::is_enabled() const

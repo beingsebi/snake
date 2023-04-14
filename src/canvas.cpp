@@ -74,6 +74,8 @@ pair<int, int> Canvas::getr_enabled() const
 
 void Canvas::enable_rcell()
 {
+    static mt19937 mt(time(nullptr));
+    shuffle(disabled_cells.begin(), disabled_cells.end(), mt);
     auto c = this->disabled_cells.back();
     this->matrix[c.first][c.second].enable();
     this->disabled_cells.pop_back();

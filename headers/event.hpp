@@ -2,16 +2,20 @@
 #define EVENT_H
 #include "cell.hpp"
 #include "canvas.hpp"
+#include "game.hpp"
 #include <string>
 #include <iostream>
 using std::pair;
 using std::string;
+
+class Game;
 class Event
 {
 protected:
     pair<int, int> pos, offset;
     string path;
     float scale;
+    unique_ptr<Game> pg;
     Event(const pair<int, int> &, const pair<int, int> &, const string &, const float);
 
 public:

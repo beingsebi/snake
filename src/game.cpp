@@ -280,8 +280,8 @@ void Game::render()
 
     // draw here
     this->draw_canvas();
-    this->draw_snake();
     this->draw_event();
+    this->draw_snake();
     this->draw_scores();
     //
     this->window->display();

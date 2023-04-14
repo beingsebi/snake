@@ -19,6 +19,7 @@ using std::string;
 using std::unique_ptr;
 using std::vector;
 
+class Event;
 class Game
 {
     sf::RenderWindow *window;

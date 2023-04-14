@@ -19,6 +19,8 @@ public:
     void init();
     vector<vector<Cell>> get_matrix() const;
     bool is_disabled(const pair<int, int> &) const;
+    pair<int, int> getr_disabled() const;
+    pair<int, int> getr_enabled() const;
     friend ostream &operator<<(ostream &, const Canvas &);
 };
 

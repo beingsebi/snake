@@ -5,7 +5,6 @@
 using std::ifstream;
 using std::make_unique;
 using std::mt19937;
-#include <iostream>
 Game::Game() // constructor
 {
     this->font.loadFromFile("files/Roboto.ttf");

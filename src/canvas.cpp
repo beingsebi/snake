@@ -63,7 +63,7 @@ pair<int, int> Canvas::getr_disabled() const
 pair<int, int> Canvas::getr_enabled() const
 {
     static mt19937 mt(time(nullptr));
-    static pair<int, int> p;
+    pair<int, int> p = {-1, -1};
     while (true)
     {
         p = {mt() % Constants::lines, mt() % Constants::columns};

@@ -21,7 +21,8 @@ void Game::init_ev()
 {
     static const int p_k = 0, p_fl = 3, p_fr = 9;
     static mt19937 mt(time(nullptr));
-    static int guess, scl;
+    static int guess;
+    float scl;
     guess = mt() % 10;
     static pair<int, int> pz;
     static string pth;
@@ -30,26 +31,26 @@ void Game::init_ev()
     if (guess <= p_k)
     {
         pth = Constants::ev_paths[Constants::key];
-        scl = 1.6f;
+        scl = 1.5f;
         this->s_ev = make_unique<Key>(pz, pth, scl);
     }
     else if (guess <= p_fl)
     {
         guess = mt() % 3;
         pth = Constants::ev_paths[4 + guess];
-        scl = 2;
+        scl = 1.6f;
         this->s_ev = make_unique<Flower>(pz, pth, scl, 1);
     }
     else /*if (guess <= p_fr)*/
     {
         guess = mt() % 3;
         pth = Constants::ev_paths[guess];
-        scl = 1.8;
+        scl = 1.5f;
         this->s_ev = make_unique<Fruit>(pz, pth, scl, 1);
     }
 }
 
-Game::~Game() // destructor
+Game::~Game()
 {
     delete this->window;
 }
@@ -175,6 +176,7 @@ void Game::draw_snake()
 
 void Game::draw_event()
 {
+    static pair<int, int> ax;
     sf::Sprite sprite;
     sf::Texture texture;
     if (!texture.loadFromFile(this->s_ev.get()->get_path()))
@@ -182,7 +184,8 @@ void Game::draw_event()
     }
     sprite.setTexture(texture);
     sprite.setScale(this->s_ev.get()->get_scale(), this->s_ev.get()->get_scale());
-    sprite.setPosition(50, 100);
+    ax = this->s_ev.get()->get_pos();
+    sprite.setPosition(ax.second * Constants::cell_size.y, ax.first * Constants ::cell_size.x);
     this->window->draw(sprite);
 }
 

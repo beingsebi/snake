@@ -19,6 +19,7 @@ Game::Game()
 
 void Game::init_ev()
 {
+    this->s_ev.reset();
     static int p_k = 1, p_fl = 3, p_fr = 4;
     if (this->canvas.getr_disabled() == Constants::NO_DISABLED)
         p_k = 0;
@@ -37,7 +38,6 @@ void Game::init_ev()
         vxr.push_back(2);
     for (int i = 1; i <= p_fr; i++)
         vxr.push_back(3);
-
     guess = vxr[mt() % vxr.size()];
     guess = 1;
     if (guess == 1)
@@ -45,7 +45,7 @@ void Game::init_ev()
         off = {9, 0};
         pth = Constants::ev_paths[Constants::key];
         scl = 1.5f;
-        this->s_ev = make_unique<Key>(pz, off, pth, scl);
+        this->s_ev = make_unique<Key>(this, pz, off, pth, scl);
     }
     else if (guess == 2)
     {
@@ -53,7 +53,7 @@ void Game::init_ev()
         pth = Constants::ev_paths[4 + guess];
         scl = 1.6f;
         off = {2, 4};
-        this->s_ev = make_unique<Flower>(pz, off, pth, scl, 1);
+        this->s_ev = make_unique<Flower>(this, pz, off, pth, scl, 1);
     }
     else /*if (guess <= p_fr)*/
     {
@@ -75,7 +75,7 @@ void Game::init_ev()
         }
         pth = Constants::ev_paths[guess];
         scl = 1.5f;
-        this->s_ev = make_unique<Fruit>(pz, off, pth, scl, td);
+        this->s_ev = make_unique<Fruit>(this, pz, off, pth, scl, td);
     }
 }
 
@@ -306,9 +306,14 @@ void Game::check_event()
     if (this->s_ev.get()->get_pos() != this->snake[0])
         return;
 
-    this->s_ev.get()->actiune(this->canvas);
+    this->s_ev.get()->actiune();
     if (auto *c = dynamic_cast<Flower *>(this->s_ev.get()))
         c->bonus();
 
     this->init_ev();
+}
+
+Canvas &Game::get_canvas()
+{
+    return canvas;
 }

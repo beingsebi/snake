@@ -15,12 +15,12 @@ protected:
     pair<int, int> pos, offset;
     string path;
     float scale;
-    unique_ptr<Game> pg;
-    Event(const pair<int, int> &, const pair<int, int> &, const string &, const float);
+    Game *pg;
+    Event(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
 
 public:
     virtual ~Event() = default;
-    virtual void actiune(Canvas &) = 0;
+    virtual void actiune() = 0;
     Event() = default;
     pair<int, int> get_pos() const;
     pair<int, int> get_offset() const;
@@ -33,10 +33,10 @@ class Fruit : public Event
     int to_add;
 
 public:
-    void actiune(Canvas &) override;
+    void actiune() override;
     virtual ~Fruit() = default;
     Fruit() = default;
-    Fruit(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
+    Fruit(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
 };
 
 class Flower : public Event
@@ -45,11 +45,11 @@ class Flower : public Event
     int theme;
 
 public:
-    void actiune(Canvas &) override;
+    void actiune() override;
     void bonus();
     virtual ~Flower() = default;
     Flower() = default;
-    Flower(const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
+    Flower(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
 };
 
 class Key : public Event
@@ -57,9 +57,9 @@ class Key : public Event
 
 public:
     virtual ~Key() = default;
-    void actiune(Canvas &) override;
+    void actiune() override;
     Key() = default;
-    Key(const pair<int, int> &, const pair<int, int> &, const string &, const float);
+    Key(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
 };
 
 #endif

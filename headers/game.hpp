@@ -55,6 +55,7 @@ public:
     bool is_running() const;
     void update();
     void render();
+    Canvas &get_canvas();
     friend ostream &operator<<(ostream &, const Game &);
 };
 #endif

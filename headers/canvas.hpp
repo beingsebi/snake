@@ -17,6 +17,7 @@ class Canvas
 public:
     Canvas();
     void init();
+    void enable_rcell();
     vector<vector<Cell>> get_matrix() const;
     bool is_disabled(const pair<int, int> &) const;
     pair<int, int> getr_disabled() const;

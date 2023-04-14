@@ -12,6 +12,7 @@ class Cell
 
 public:
     // Cell operator=(const Cell &);
+    Cell() = default;
     Cell(const Cell &);
     Cell(const int &, const int &, const bool);
     void set_coords(const int &, const int &);

@@ -39,7 +39,6 @@ void Game::init_ev()
     for (int i = 1; i <= p_fr; i++)
         vxr.push_back(3);
     guess = vxr[mt() % vxr.size()];
-    guess = 1;
     if (guess == 1)
     {
         off = {9, 0};

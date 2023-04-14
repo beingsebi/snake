@@ -30,16 +30,22 @@ void Game::init_ev()
     if (guess <= p_k)
     {
         pth = Constants::ev_paths[Constants::key];
-        scl = 1.6;
+        scl = 1.6f;
         this->s_ev = make_unique<Key>(pz, pth, scl);
     }
     else if (guess <= p_fl)
     {
-        this->s_ev = make_unique<Flower>();
+        guess = mt() % 3;
+        pth = Constants::ev_paths[4 + guess];
+        scl = 2;
+        this->s_ev = make_unique<Flower>(pz, pth, scl, 1);
     }
-    else if (guess <= p_fr)
+    else /*if (guess <= p_fr)*/
     {
-        this->s_ev = make_unique<Fruit>();
+        guess = mt() % 3;
+        pth = Constants::ev_paths[guess];
+        scl = 1.8;
+        this->s_ev = make_unique<Fruit>(pz, pth, scl, 1);
     }
 }
 
@@ -176,6 +182,7 @@ void Game::draw_event()
     }
     sprite.setTexture(texture);
     sprite.setScale(this->s_ev.get()->get_scale(), this->s_ev.get()->get_scale());
+    sprite.setPosition(50, 100);
     this->window->draw(sprite);
 }
 

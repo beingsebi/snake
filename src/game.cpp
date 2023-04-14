@@ -24,7 +24,7 @@ void Game::init_ev()
         p_k = 0;
     vector<int> vxr;
     static mt19937 mt(time(nullptr));
-    static int guess;
+    static int guess, td;
     float scl;
     static pair<int, int> pz, off;
     static string pth;
@@ -62,17 +62,20 @@ void Game::init_ev()
         {
         case 0:
             off = {6, 5};
+            td = 1;
             break;
         case 1:
             off = {10, -2};
+            td = 3;
             break;
         case 2:
             off = {2, 4};
+            td = 2;
             break;
         }
         pth = Constants::ev_paths[guess];
         scl = 1.5f;
-        this->s_ev = make_unique<Fruit>(pz, off, pth, scl, 1);
+        this->s_ev = make_unique<Fruit>(pz, off, pth, scl, td);
     }
 }
 

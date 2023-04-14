@@ -23,3 +23,5 @@ vector<string> const Constants::ev_paths = {
     "files/flower_yellow.png",
     "files/flower_purple.png",
 };
+
+pair<int, int> const Constants::NO_DISABLED = {-1, -1};

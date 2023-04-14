@@ -4,14 +4,19 @@
 #include "constants.hpp"
 #include "canvas.hpp"
 #include "snake.hpp"
+#include "event.hpp"
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <vector>
 #include <queue>
 #include <ostream>
+#include <memory>
+#include <random>
+
 using std::ostream;
 using std::queue;
 using std::string;
+using std::unique_ptr;
 using std::vector;
 
 class Game
@@ -24,15 +29,17 @@ class Game
     sf::Font font;
     Canvas canvas;
     Snake snake;
+    unique_ptr<Event> s_ev;
     int score = 0;
     bool game_over = 0;
     queue<int> moves;
 
     void poll_events();
     string get_high_score() const;
+    void init_ev();
     void draw_canvas();
     void draw_snake();
-    void draw_events();
+    void draw_event();
     void draw_scores();
     void reset();
     void check_game_over();

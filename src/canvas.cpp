@@ -1,4 +1,5 @@
 #include "../headers/canvas.hpp"
+using std::mt19937;
 
 Canvas::Canvas()
 {
@@ -49,4 +50,24 @@ ostream &operator<<(ostream &os, const Canvas &canv)
 vector<vector<Cell>> Canvas::get_matrix() const
 {
     return this->matrix;
+}
+
+pair<int, int> Canvas::getr_disabled() const
+{
+    if (disabled_cells.empty())
+        return Constants::NO_DISABLED;
+    static mt19937 mt(time(nullptr));
+    return this->disabled_cells[mt() % disabled_cells.size()];
+}
+
+pair<int, int> Canvas::getr_enabled() const
+{
+    static mt19937 mt(time(nullptr));
+    static pair<int, int> p;
+    while (true)
+    {
+        p = {mt() % Constants::lines, mt() % Constants::columns};
+        if (!is_disabled(p))
+            return p;
+    }
 }

@@ -3,24 +3,50 @@
 #define ecd Constants::Directions
 #endif
 using std::ifstream;
-
+using std::make_unique;
+using std::mt19937;
+#include <iostream>
 Game::Game() // constructor
 {
     this->font.loadFromFile("files/Roboto.ttf");
     this->video_mode.width = 800 + 2;
-    this->video_mode.height = 600 + 2 + 25;
-    // height + border + text
+    this->video_mode.height = 600 + 2 + 25; // height + border + text
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
     this->window->setFramerateLimit(4);
+    this->init_ev();
+}
+
+void Game::init_ev()
+{
+    static const int p_k = 0, p_fl = 3, p_fr = 9;
+    static mt19937 mt(time(nullptr));
+    static int guess, scl;
+    guess = mt() % 10;
+    static pair<int, int> pz;
+    static string pth;
+
+    pz = this->canvas.getr_enabled();
+    if (guess <= p_k)
+    {
+        pth = Constants::ev_paths[Constants::key];
+        scl = 1.6;
+        this->s_ev = make_unique<Key>(pz, pth, scl);
+    }
+    else if (guess <= p_fl)
+    {
+        this->s_ev = make_unique<Flower>();
+    }
+    else if (guess <= p_fr)
+    {
+        this->s_ev = make_unique<Fruit>();
+    }
 }
 
 Game::~Game() // destructor
 {
     delete this->window;
 }
-
-// private functions:
 
 void Game::reset()
 {
@@ -29,6 +55,7 @@ void Game::reset()
     game_over = 0;
     this->canvas.init();
     this->snake.init();
+    this->init_ev();
     score = 0;
 }
 
@@ -140,15 +167,15 @@ void Game::draw_snake()
     }
 }
 
-void Game::draw_events()
+void Game::draw_event()
 {
     sf::Sprite sprite;
     sf::Texture texture;
-    if (!texture.loadFromFile("files/key.png"))
+    if (!texture.loadFromFile(this->s_ev.get()->get_path()))
     {
     }
     sprite.setTexture(texture);
-    sprite.setScale(1.6f, 1.6f);
+    sprite.setScale(this->s_ev.get()->get_scale(), this->s_ev.get()->get_scale());
     this->window->draw(sprite);
 }
 
@@ -168,6 +195,7 @@ void Game::draw_scores()
     this->text_high_score.setPosition(625.f, 602.f);
     this->window->draw(this->text_high_score);
 }
+
 void Game::check_game_over()
 {
     if (this->snake.is_outside())
@@ -188,7 +216,6 @@ void Game::check_game_over()
         }
 }
 
-// public functions:
 bool Game::is_running() const
 {
     return this->window->isOpen();
@@ -212,7 +239,7 @@ void Game::render()
     // draw here
     this->draw_canvas();
     this->draw_snake();
-    this->draw_events();
+    this->draw_event();
     this->draw_scores();
     //
     this->window->display();

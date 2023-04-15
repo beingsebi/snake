@@ -42,14 +42,14 @@ public:
 class Flower : public Event
 {
     static int count;
-    int theme;
+    Constants::Themes theme;
 
 public:
     void actiune() override;
     void bonus();
     virtual ~Flower() = default;
     Flower() = default;
-    Flower(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
+    Flower(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const Constants::Themes);
 };
 
 class Key : public Event

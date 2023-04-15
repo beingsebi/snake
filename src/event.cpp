@@ -8,7 +8,7 @@ Event::Event(Game *g, const pair<int, int> &p, const pair<int, int> &off, const 
 
 Fruit::Fruit(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl, const int td) : Event{g, p, off, pth, scl}, to_add{td} {}
 
-Flower::Flower(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl, const int thm) : Event{g, p, off, pth, scl}, theme{thm} {}
+Flower::Flower(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl, const Constants::Themes thm) : Event{g, p, off, pth, scl}, theme{thm} {}
 
 Key::Key(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl) : Event{g, p, off, pth, scl} {}
 
@@ -19,7 +19,7 @@ float Event::get_scale() const { return this->scale; }
 
 void Flower::actiune()
 {
-    std::cout << "floare" << this->theme << std::endl;
+    this->pg->set_theme(this->theme);
 }
 
 void Fruit::actiune()

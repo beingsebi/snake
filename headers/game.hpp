@@ -32,6 +32,7 @@ class Game
     Snake snake;
     unique_ptr<Event> s_ev;
     int score = 0;
+    Constants::Themes theme = Constants::Themes::blue;
     bool game_over = 0;
     queue<int> moves;
 
@@ -55,6 +56,7 @@ public:
     bool is_running() const;
     void update();
     void render();
+    void set_theme(const Constants::Themes);
     Canvas &get_canvas();
     friend ostream &operator<<(ostream &, const Game &);
 };

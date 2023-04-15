@@ -5,11 +5,36 @@ int const Constants::columns = 20;
 
 sf::Vector2f const Constants::cell_size = sf::Vector2f(40.f, 40.f);
 
-sf::Color const Constants::cell_color = sf::Color(34, 40, 49, 255);
-sf::Color const Constants::border_color = sf::Color(0, 173, 181, 255);
-sf::Color const Constants::disabled_color = sf::Color(238, 238, 238, 255);
-sf::Color const Constants::body_color = sf::Color(153, 255, 51, 255);
-sf::Color const Constants::head_color = sf::Color(51, 204, 30, 255);
+sf::Color const Constants::cell_color[] = {
+    sf::Color(34, 40, 49, 255),
+    sf::Color(252, 245, 199, 255),
+    sf::Color(239, 60, 60, 255),
+    sf::Color(236, 176, 225, 255),
+};
+sf::Color const Constants::border_color[] = {
+    sf::Color(0, 173, 181, 255),
+    sf::Color(231, 216, 132, 255),
+    sf::Color(192, 0, 50, 255),
+    sf::Color(140, 33, 85, 255),
+};
+sf::Color const Constants::disabled_color[] = {
+    sf::Color(238, 238, 238, 255),
+    sf::Color(160, 206, 217, 255),
+    sf::Color(43, 45, 66, 255),
+    sf::Color(124, 124, 124, 255),
+};
+sf::Color const Constants::body_color[] = {
+    sf::Color(153, 255, 51, 255),
+    sf::Color(235, 185, 223, 255),
+    sf::Color(237, 242, 244, 255),
+    sf::Color(215, 219, 7, 255),
+};
+sf::Color const Constants::head_color[] = {
+    sf::Color(51, 204, 30, 255),
+    sf::Color(217, 145, 186, 255),
+    sf::Color(141, 153, 174, 255),
+    sf::Color(176, 226, 152, 255),
+};
 
 vector<pair<int, int>> const Constants::directions = {{1, 0}, {0, -1}, {-1, 0}, {0, 1}};
 //                                                              jos      stanga    sus    dreapta
@@ -18,9 +43,9 @@ vector<string> const Constants::ev_paths = {
     "files/watermelon.png",
     "files/pear.png",
     "files/key.png",
-    "files/flower_red.png",
+    "files/flower_blue.png",
     "files/flower_yellow.png",
-    "files/flower_purple.png",
-    "files/flower_blue.png"};
+    "files/flower_red.png",
+    "files/flower_purple.png"};
 
 pair<int, int> const Constants::NO_DISABLED = {-1, -1};

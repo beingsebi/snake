@@ -10,11 +10,11 @@ struct Constants
 {
     static sf::Vector2f const cell_size;
 
-    static sf::Color const cell_color;
-    static sf::Color const border_color;
-    static sf::Color const disabled_color;
-    static sf::Color const body_color;
-    static sf::Color const head_color;
+    static sf::Color const cell_color[4];
+    static sf::Color const border_color[4];
+    static sf::Color const disabled_color[4];
+    static sf::Color const body_color[4];
+    static sf::Color const head_color[4];
 
     static int const lines;
     static int const columns;
@@ -36,10 +36,18 @@ struct Constants
         watermelon,
         pear,
         key,
-        redf,
+        bluef,
         yellowf,
-        purplef,
-        bluef
+        redf,
+        purplef
+    };
+
+    enum Themes
+    {
+        blue,
+        yellow,
+        red,
+        purple
     };
 };
 

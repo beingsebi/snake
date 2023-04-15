@@ -12,6 +12,12 @@ Game::Game()
     this->video_mode.width = 800 + 2;
     this->video_mode.height = 600 + 2 + 25; // height + border + text
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
+    auto image = sf::Image{};
+    if (!image.loadFromFile("files/logo.png"))
+    {
+    }
+    else
+        this->window->setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
     this->window->setFramerateLimit(4);
     this->init_ev();

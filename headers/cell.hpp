@@ -11,7 +11,6 @@ class Cell
     bool enabled;
 
 public:
-    // Cell operator=(const Cell &);
     Cell() = default;
     Cell(const Cell &);
     Cell(const int &, const int &, const bool);

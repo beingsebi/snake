@@ -38,5 +38,11 @@ void Flower::bonus()
 {
     count = (count + 1) % 5;
     if (!count)
-        this->pg->add_score(Constants::bonus_score);
+        this->pg->add_score(Constants::bonus_score),
+            this->pg->add_grow(1);
+}
+
+void Flower::reset_count()
+{
+    count = 0;
 }

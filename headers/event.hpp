@@ -48,6 +48,7 @@ public:
     void actiune() override;
     void bonus();
     virtual ~Flower() = default;
+    static void reset_count();
     Flower() = default;
     Flower(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const Constants::Themes);
 };

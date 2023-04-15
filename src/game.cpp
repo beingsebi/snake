@@ -99,6 +99,7 @@ void Game::reset()
     this->theme = Constants::Themes::blue; //! the order!!
     this->init_ev();
     score = 0;
+    Flower::reset_count();
 }
 
 void Game::poll_events()

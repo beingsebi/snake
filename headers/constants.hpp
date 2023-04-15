@@ -11,7 +11,6 @@ struct Constants
     static sf::Vector2f const cell_size;
 
     static sf::Color const cell_color;
-    static sf::Color const color2;
     static sf::Color const border_color;
     static sf::Color const disabled_color;
     static sf::Color const body_color;
@@ -39,7 +38,8 @@ struct Constants
         key,
         redf,
         yellowf,
-        purplef
+        purplef,
+        bluef
     };
 };
 

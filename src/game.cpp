@@ -48,7 +48,7 @@ void Game::init_ev()
     }
     else if (guess == 2)
     {
-        guess = mt() % 3;
+        guess = mt() % 4;
         pth = Constants::ev_paths[4 + guess];
         scl = 1.6f;
         off = {2, 4};

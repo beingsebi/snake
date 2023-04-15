@@ -4,7 +4,7 @@ int const Constants::lines = 15;
 int const Constants::columns = 20;
 int const Constants::bonus_score = 20;
 int const Constants::key_score = 10;
-
+string const Constants::HIGH_SCORE_PATH = "files/high_score.txt";
 sf::Vector2f const Constants::cell_size = sf::Vector2f(40.f, 40.f);
 
 sf::Color const Constants::cell_color[] = {

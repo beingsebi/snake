@@ -31,7 +31,7 @@ void Fruit::actiune()
 void Key::actiune()
 {
     this->pg->get_canvas().enable_rcell();
-    this->pg->add_score(Constants::key_score)
+    this->pg->add_score(Constants::key_score);
 }
 
 void Flower::bonus()

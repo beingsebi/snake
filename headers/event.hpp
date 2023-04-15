@@ -4,7 +4,7 @@
 #include "canvas.hpp"
 #include "game.hpp"
 #include <string>
-#include <iostream>
+#include <fstream>
 using std::pair;
 using std::string;
 

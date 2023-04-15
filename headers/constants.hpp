@@ -23,6 +23,7 @@ struct Constants
     static pair<int, int> const NO_DISABLED;
     static int const bonus_score;
     static int const key_score;
+    static string const HIGH_SCORE_PATH;
 
     enum Directions
     {

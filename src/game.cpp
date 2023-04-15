@@ -194,8 +194,10 @@ void Game::draw_canvas()
 string Game::get_high_score() const
 {
     static string s;
-    ifstream f("files/high_score.txt");
+    ifstream f(Constants::HIGH_SCORE_PATH);
     f >> s;
+    if (s.empty())
+        s = "0";
     return s;
 }
 
@@ -254,20 +256,18 @@ void Game::draw_scores()
 
 void Game::check_game_over()
 {
-    if (this->snake.is_outside())
+    if (this->snake.is_outside() || canvas.is_disabled(this->snake[0]))
     {
+
         this->game_over = 1;
-        return;
-    }
-    if (canvas.is_disabled(this->snake[0]))
-    {
-        this->game_over = 1;
+        check_high_score();
         return;
     }
     for (int i = 1; i < (int)this->snake.getp_size(); i++)
         if (this->snake[0] == this->snake[i])
         {
             this->game_over = 1;
+            check_high_score();
             return;
         }
 }
@@ -346,4 +346,17 @@ void Game::add_grow(const int &gr)
 void Game::add_score(const int &s)
 {
     this->score += s;
+}
+
+void Game::check_high_score()
+{
+    static int hs;
+    hs = 0;
+    for (const char &c : get_high_score())
+        hs = hs * 10 + c - '0';
+    if (this->score > hs)
+    {
+        std::ofstream g(Constants::HIGH_SCORE_PATH);
+        g << this->score << std::endl;
+    }
 }

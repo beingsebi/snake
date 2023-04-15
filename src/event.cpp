@@ -19,12 +19,12 @@ float Event::get_scale() const { return this->scale; }
 
 void Flower::actiune()
 {
-    std::cout << "floare" << std::endl;
+    std::cout << "floare" << this->theme << std::endl;
 }
 
 void Fruit::actiune()
 {
-    std::cout << "fruct" << std::endl;
+    std::cout << "fruct" << this->to_add << std::endl;
 }
 
 void Key::actiune()

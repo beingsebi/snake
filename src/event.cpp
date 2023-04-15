@@ -24,7 +24,7 @@ void Flower::actiune()
 
 void Fruit::actiune()
 {
-    std::cout << "fruct" << this->to_add << std::endl;
+    this->pg->add_grow(this->to_add);
 }
 
 void Key::actiune()

@@ -337,3 +337,8 @@ void Game::set_theme(const Constants::Themes thm)
 {
     this->theme = thm;
 }
+
+void Game::add_grow(const int &gr)
+{
+    this->snake.add_grow(gr);
+}

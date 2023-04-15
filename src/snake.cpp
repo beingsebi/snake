@@ -43,6 +43,7 @@ void Snake::init()
         this->direction = 2;
         break;
     }
+    to_grow = 0;
 }
 
 Snake::~Snake()
@@ -59,11 +60,15 @@ void Snake::reset()
 
 void Snake::move()
 {
+    static pair<int, int> ax;
+    ax = positions.back();
     for (int i = this->positions.size() - 1; i >= 1; i--)
         this->positions[i] = this->positions[i - 1];
 
     this->positions.front().first += Constants::directions[this->direction].first;
     this->positions.front().second += Constants::directions[this->direction].second;
+    if (to_grow)
+        to_grow--, positions.push_back(ax);
 }
 
 int Snake::get_direction() const
@@ -114,4 +119,9 @@ ostream &operator<<(ostream &os, const Snake &snake)
         os << "right";
     os << '\n';
     return os;
+}
+
+void Snake::add_grow(const int &gr)
+{
+    this->to_grow += gr;
 }

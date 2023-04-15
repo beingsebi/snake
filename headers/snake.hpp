@@ -13,7 +13,7 @@ using std::vector;
 class Snake
 {
     vector<pair<int, int>> positions;
-    int direction;
+    int direction, to_grow = 0;
 
 public:
     void init();
@@ -25,6 +25,7 @@ public:
     void set_direction(const int &);
     bool is_outside() const;
     size_t getp_size() const;
+    void add_grow(const int &);
     friend ostream &operator<<(ostream &, const Snake &);
     pair<int, int> &operator[](size_t);
 };

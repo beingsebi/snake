@@ -13,6 +13,7 @@ class Cell
 public:
     Cell() = default;
     Cell(const Cell &);
+
     Cell(const int &, const int &, const bool);
     void set_coords(const int &, const int &);
     sf::RectangleShape get_rect() const;

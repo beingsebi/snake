@@ -21,6 +21,8 @@ struct Constants
     static vector<pair<int, int>> const directions;
     static vector<string> const ev_paths;
     static pair<int, int> const NO_DISABLED;
+    static int const bonus_score;
+    static int const key_score;
 
     enum Directions
     {

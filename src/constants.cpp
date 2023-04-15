@@ -2,6 +2,8 @@
 
 int const Constants::lines = 15;
 int const Constants::columns = 20;
+int const Constants::bonus_score = 20;
+int const Constants::key_score = 10;
 
 sf::Vector2f const Constants::cell_size = sf::Vector2f(40.f, 40.f);
 

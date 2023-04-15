@@ -25,14 +25,18 @@ void Flower::actiune()
 void Fruit::actiune()
 {
     this->pg->add_grow(this->to_add);
+    this->pg->add_score(this->to_add * 5);
 }
 
 void Key::actiune()
 {
     this->pg->get_canvas().enable_rcell();
+    this->pg->add_score(Constants::key_score)
 }
 
 void Flower::bonus()
 {
-    std::cout << "bonus" << std::endl;
+    count = (count + 1) % 5;
+    if (!count)
+        this->pg->add_score(Constants::bonus_score);
 }

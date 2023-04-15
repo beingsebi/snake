@@ -58,6 +58,7 @@ public:
     void render();
     void set_theme(const Constants::Themes);
     void add_grow(const int &);
+    void add_score(const int &);
     Canvas &get_canvas();
     friend ostream &operator<<(ostream &, const Game &);
 };

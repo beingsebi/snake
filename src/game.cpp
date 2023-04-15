@@ -342,3 +342,8 @@ void Game::add_grow(const int &gr)
 {
     this->snake.add_grow(gr);
 }
+
+void Game::add_score(const int &s)
+{
+    this->score += s;
+}

@@ -48,15 +48,21 @@ void Game::init_ev()
     }
     else if (guess == 2)
     {
-        guess = mt() % 4;
+        do
+        {
+            guess = mt() % 4;
+        } while (static_cast<Constants::Themes>(guess) == this->theme);
         pth = Constants::ev_paths[4 + guess];
         scl = 1.6f;
         off = {2, 4};
-        this->s_ev = make_unique<Flower>(this, pz, off, pth, scl, 1);
+        this->s_ev = make_unique<Flower>(this, pz, off, pth, scl, static_cast<Constants::Themes>(guess));
     }
     else /*if (guess <= p_fr)*/
     {
-        guess = mt() % 3;
+        if (this->theme == Constants::Themes::red)
+            guess = (1 + (mt() % 2));
+        else
+            guess = mt() % 3;
         switch (guess)
         {
         case 0:
@@ -90,6 +96,7 @@ void Game::reset()
     game_over = 0;
     this->canvas.init();
     this->snake.init();
+    this->theme = Constants::Themes::blue; //! the order!!
     this->init_ev();
     score = 0;
 }
@@ -170,9 +177,18 @@ void Game::poll_events()
 
 void Game::draw_canvas()
 {
+    static sf::RectangleShape rect;
     for (const auto &i : this->canvas.get_matrix())
         for (const auto &j : i)
-            this->window->draw(j.get_rect());
+        {
+            rect = j.get_rect();
+            if (j.is_enabled())
+                rect.setFillColor(Constants::cell_color[theme]);
+            else
+                rect.setFillColor(Constants::disabled_color[theme]);
+            rect.setOutlineColor(Constants::border_color[theme]);
+            this->window->draw(rect);
+        }
 }
 
 string Game::get_high_score() const
@@ -188,12 +204,12 @@ void Game::draw_snake()
     static sf::RectangleShape rect;
     rect.setSize(Constants::cell_size);
     rect.setOutlineThickness(0.f);
-    rect.setFillColor(Constants::head_color);
+    rect.setFillColor(Constants::head_color[theme]);
     rect.setPosition(static_cast<float>(1 + snake[0].second * Constants::cell_size.y),
                      static_cast<float>(1 + snake[0].first * Constants::cell_size.x));
     this->window->draw(rect);
 
-    rect.setFillColor(Constants::body_color);
+    rect.setFillColor(Constants::body_color[theme]);
     for (int i = 1; i < (int)this->snake.getp_size(); i++)
     {
         rect.setPosition(static_cast<float>(1 + snake[i].second * Constants::cell_size.y),
@@ -315,4 +331,9 @@ void Game::check_event()
 Canvas &Game::get_canvas()
 {
     return canvas;
+}
+
+void Game::set_theme(const Constants::Themes thm)
+{
+    this->theme = thm;
 }

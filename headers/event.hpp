@@ -12,10 +12,10 @@ class Game;
 class Event
 {
 protected:
+    Game *pg;
     pair<int, int> pos, offset;
     string path;
     float scale;
-    Game *pg;
     Event(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
 
 public:

@@ -118,6 +118,11 @@ void Game::poll_events()
             this->window->close();
             break;
 
+        case sf::Event::KeyReleased:
+            if (this->ev.key.code == sf::Keyboard::Space)
+                this->window->setFramerateLimit(3);
+            break;
+
         case sf::Event::KeyPressed:
 
             switch (this->ev.key.code)
@@ -180,6 +185,8 @@ void Game::poll_events()
             break;
         }
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        this->window->setFramerateLimit(7);
 }
 
 void Game::draw_canvas()

@@ -19,14 +19,14 @@ Game::Game()
     else
         this->window->setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
     this->window->setPosition(sf::Vector2i(this->video_mode.getDesktopMode().width / 2 - 400, this->video_mode.getDesktopMode().height / 2 - 300));
-    this->window->setFramerateLimit(4);
+    this->window->setFramerateLimit(3);
     this->init_ev();
 }
 
 void Game::init_ev()
 {
     this->s_ev.reset();
-    static int p_k = 1, p_fl = 3, p_fr = 4;
+    static int p_k = 3, p_fl = 4, p_fr = 10;
     if (this->canvas.getr_disabled() == Constants::NO_DISABLED)
         p_k = 0;
     vector<int> vxr;

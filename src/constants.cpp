@@ -10,7 +10,7 @@ sf::Vector2f const Constants::cell_size = sf::Vector2f(40.f, 40.f);
 sf::Color const Constants::cell_color[] = {
     sf::Color(34, 40, 49, 255),
     sf::Color(252, 245, 199, 255),
-    sf::Color(239, 60, 60, 255),
+    sf::Color(239, 80, 80, 255),
     sf::Color(236, 176, 225, 255),
 };
 sf::Color const Constants::border_color[] = {

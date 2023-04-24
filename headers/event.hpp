@@ -2,7 +2,6 @@
 #define EVENT_H
 #include "cell.hpp"
 #include "canvas.hpp"
-#include "game.hpp"
 #include <string>
 #include <fstream>
 using std::pair;

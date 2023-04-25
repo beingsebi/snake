@@ -5,16 +5,19 @@
 using std::ifstream;
 using std::make_unique;
 using std::mt19937;
-
 Game::Game()
 {
-    this->font.loadFromFile("files/Roboto.ttf");
+    if (!this->font.loadFromFile("files/Roboto.ttf"))
+    {
+        throw file_error("Unable to load font");
+    }
     this->video_mode.width = 800 + 2;
     this->video_mode.height = 600 + 2 + 25; // height + border + text
     this->window = new sf::RenderWindow(this->video_mode, "Snake game", sf::Style::Titlebar | sf::Style::Close);
     auto image = sf::Image{};
     if (!image.loadFromFile("files/logo.png"))
     {
+        throw file_error("Unable to load logo");
     }
     else
         this->window->setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
@@ -212,6 +215,14 @@ string Game::get_high_score() const
     f >> s;
     if (s.empty())
         s = "0";
+    int hs = 0;
+    for (const auto &i : s)
+        if (!isdigit(i))
+            throw score_error("Invalid score.");
+        else
+            hs = hs * 10 + i - '0';
+    if (hs > 10000)
+        throw score_error("Invalid score.");
     return s;
 }
 
@@ -241,6 +252,7 @@ void Game::draw_event()
     sf::Texture texture;
     if (!texture.loadFromFile(this->s_ev.get()->get_path()))
     {
+        throw file_error("Unable to load event image.");
     }
     sprite.setTexture(texture);
     sprite.setScale(this->s_ev.get()->get_scale(), this->s_ev.get()->get_scale());
@@ -309,9 +321,9 @@ void Game::render()
 
     // draw here
     this->draw_canvas();
-    this->draw_event();
+    this->draw_event(); // might throw file_error
     this->draw_snake();
-    this->draw_scores();
+    this->draw_scores(); // might throw score_error
     //
     this->window->display();
     this->update_snake();

@@ -2,6 +2,8 @@
 #define CONSTANTS_H
 
 #include <SFML/Graphics.hpp>
+#include "exceptions.hpp"
+
 using std::pair;
 using std::string;
 using std::vector;

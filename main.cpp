@@ -1,3 +1,4 @@
+// Good luck!
 #include <SFML/Graphics.hpp>
 #include "headers/game.hpp"
 #include <iostream>

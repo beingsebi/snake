@@ -284,7 +284,6 @@ void Game::check_game_over()
 {
     if (this->snake.is_outside() || canvas.is_disabled(this->snake[0]))
     {
-
         this->game_over = 1;
         check_high_score();
         return;

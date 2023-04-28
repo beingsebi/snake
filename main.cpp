@@ -31,5 +31,9 @@ try_again:
         gg.flush();
         goto try_again;
     }
+    catch (...)
+    {
+        cout << "Something went wrong... :(" << endl;
+    }
     return 0;
 }

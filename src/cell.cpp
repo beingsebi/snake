@@ -27,7 +27,6 @@ void Cell::enable()
 {
     this->enabled = 1;
     // this->rect.setOutlineThickness(1.f);
-
     // this->rect.setFillColor(Constants::cell_color);
     // this->rect.setOutlineColor(Constants::border_color);
 }
@@ -36,7 +35,6 @@ void Cell::disable()
 {
     this->enabled = 0;
     // this->rect.setOutlineThickness(1.f);
-
     // this->rect.setFillColor(Constants::disabled_color);
     // this->rect.setOutlineColor(Constants::disabled_color);
 }

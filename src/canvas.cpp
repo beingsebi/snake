@@ -18,6 +18,7 @@ void Canvas::init()
         for (int j = 0; j < Constants::columns; j++)
         {
             ax = (((mt() % 11) != 0) | (i == 0) | (j == 0) | (i == Constants::lines - 1) | (j == Constants::columns - 1));
+            // blocked cells distribution
             if (ax)
                 this->matrix[i].push_back(Cell(i, j, 1));
             else
@@ -74,6 +75,8 @@ pair<int, int> Canvas::getr_enabled() const
 
 void Canvas::enable_rcell()
 {
+    if (disabled_cells.empty())
+        throw logic_error("NO disabled cells to unblock.");
     static mt19937 mt(time(nullptr));
     shuffle(disabled_cells.begin(), disabled_cells.end(), mt);
     auto c = this->disabled_cells.back();

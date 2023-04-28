@@ -21,4 +21,11 @@ class score_error : public apk_error
 public:
     explicit score_error(const string &s) : apk_error{"Score error: " + s + "\n"} {}
 };
+
+class logic_error : public apk_error
+{
+public:
+    explicit logic_error(const string &s) : apk_error{"Logic error: " + s + "\n"} {}
+};
+
 #endif

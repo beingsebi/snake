@@ -62,4 +62,14 @@ public:
     Key(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
 };
 
+class Vegetable : public Event
+{
+    int penalty;
+
+public:
+    void actiune() override;
+    virtual ~Vegetable() = default;
+    Vegetable() = default;
+    Vegetable(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
+};
 #endif

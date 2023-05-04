@@ -29,7 +29,7 @@ Game::Game()
 void Game::init_ev()
 {
     this->s_ev.reset();
-    static int p_k = 3, p_fl = 4, p_fr = 10;
+    static int p_k = 4, p_fl = 6, p_fr = 12, p_egg = 9;
     if (this->canvas.getr_disabled() == Constants::NO_DISABLED)
         p_k = 0;
     vector<int> vxr;
@@ -47,6 +47,8 @@ void Game::init_ev()
         vxr.push_back(2);
     for (int i = 1; i <= p_fr; i++)
         vxr.push_back(3);
+    for (int i = 1; i <= p_egg; i++)
+        vxr.push_back(4);
     guess = vxr[mt() % vxr.size()];
     if (guess == 1)
     {
@@ -66,7 +68,7 @@ void Game::init_ev()
         off = {2, 4};
         this->s_ev = make_unique<Flower>(this, pz, off, pth, scl, static_cast<Constants::Themes>(guess));
     }
-    else /*if (guess <= p_fr)*/
+    else if (guess == 3)
     {
         if (this->theme == Constants::Themes::red)
             guess = (1 + (mt() % 2));
@@ -90,6 +92,14 @@ void Game::init_ev()
         pth = Constants::ev_paths[guess];
         scl = 1.5f;
         this->s_ev = make_unique<Fruit>(this, pz, off, pth, scl, td);
+    }
+    else if (guess == 4)
+    {
+        pth = Constants::ev_paths[8];
+        scl = 1.6f;
+        off = {0, 0};
+        td = -5;
+        this->s_ev = make_unique<Vegetable>(this, pz, off, pth, scl, td);
     }
 }
 

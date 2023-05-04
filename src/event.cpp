@@ -45,3 +45,10 @@ void Flower::reset_count()
 {
     count = 0;
 }
+
+Vegetable::Vegetable(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl, const int td) : Event{g, p, off, pth, scl}, penalty{td} {}
+
+void Vegetable::actiune()
+{
+    this->pg->add_score(this->penalty);
+}

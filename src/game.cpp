@@ -29,7 +29,7 @@ Game::Game()
 void Game::init_ev()
 {
     this->s_ev.reset();
-    static int p_k = 4, p_fl = 6, p_fr = 12, p_egg = 9;
+    static int p_k = 4, p_fl = 6, p_fr = 12, p_egg = 0; // probabilitiesssss
     if (this->canvas.getr_disabled() == Constants::NO_DISABLED)
         p_k = 0;
     vector<int> vxr;

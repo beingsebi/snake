@@ -26,6 +26,10 @@ struct Constants
     static int const bonus_score;
     static int const key_score;
     static string const HIGH_SCORE_PATH;
+    static int const prob_key;
+    static int const prob_flower;
+    static int const prob_fruit;
+    static int const prob_egg;
 
     enum Directions
     {

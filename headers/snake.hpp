@@ -25,7 +25,7 @@ public:
     void set_direction(const int &);
     bool is_outside() const;
     size_t getp_size() const;
-    void add_grow(const int &);
+    void add_grow(int);
     friend ostream &operator<<(ostream &, const Snake &);
     pair<int, int> &operator[](size_t);
 };

@@ -6,23 +6,17 @@
 using std::cout;
 using std::endl;
 using std::ofstream;
-
+void play();
 int main()
 {
-try_again:
+
     try
     {
-        Game game;
-
-        while (game.is_running())
-        {
-            game.render(); // maybe  better to render first and update later in  order  to reduce lag?
-            game.update();
-        }
+        play();
     }
     catch (file_error &err)
     {
-        cout << err.what();
+        cout << err.what() << endl;
     }
     catch (score_error &err)
     {
@@ -30,11 +24,29 @@ try_again:
         ofstream gg(Constants::HIGH_SCORE_PATH);
         gg << 0;
         gg.flush();
-        goto try_again;
+        // try again
+        try
+        {
+            play();
+        }
+        catch (...)
+        {
+            cout << "Something went wrong... :(" << endl;
+        }
     }
     catch (...)
     {
         cout << "Something went wrong... :(" << endl;
     }
     return 0;
+}
+void play()
+{
+    Game game;
+
+    while (game.is_running())
+    {
+        game.render(); // maybe  better to render first and update later in  order  to reduce lag?
+        game.update();
+    }
 }

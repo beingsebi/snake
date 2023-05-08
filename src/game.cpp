@@ -29,7 +29,10 @@ Game::Game()
 void Game::init_ev()
 {
     this->s_ev.reset();
-    static int p_k = 4, p_fl = 6, p_fr = 12, p_egg = 0; // probabilitiesssss
+    static int p_k = Constants::prob_key,
+               p_fl = Constants::prob_flower,
+               p_fr = Constants::prob_fruit,
+               p_egg = Constants::prob_egg; // probabilitiesssss
     if (this->canvas.getr_disabled() == Constants::NO_DISABLED)
         p_k = 0;
     vector<int> vxr;
@@ -373,12 +376,12 @@ void Game::set_theme(const Constants::Themes thm)
     this->theme = thm;
 }
 
-void Game::add_grow(const int &gr)
+void Game::add_grow(int gr)
 {
     this->snake.add_grow(gr);
 }
 
-void Game::add_score(const int &s)
+void Game::add_score(int s)
 {
     this->score += s;
 }

@@ -121,7 +121,7 @@ ostream &operator<<(ostream &os, const Snake &snake)
     return os;
 }
 
-void Snake::add_grow(const int &gr)
+void Snake::add_grow(int gr)
 {
     this->to_grow += gr;
 }

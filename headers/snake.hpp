@@ -15,10 +15,14 @@ class Snake
     vector<pair<int, int>> positions;
     int direction, to_grow = 0;
 
+    Snake();
+
 public:
+    Snake(const Snake &) = delete;
+    Snake operator=(const Snake &) = delete;
+    static Snake &get_snake();
     void init();
     void move();
-    Snake();
     ~Snake();
     void reset();
     int get_direction() const;

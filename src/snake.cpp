@@ -1,5 +1,11 @@
 #include "../headers/snake.hpp"
 
+Snake &Snake::get_snake()
+{
+    static Snake snake;
+    return snake;
+}
+
 Snake::Snake()
 {
     this->init();

@@ -29,7 +29,7 @@ class Game
     sf::Text text_high_score;
     sf::Font font;
     Canvas &canvas = Canvas::get_canvas();
-    Snake snake;
+    Snake &snake = Snake::get_snake();
     unique_ptr<Event> s_ev;
     int score = 0;
     Constants::Themes theme = Constants::Themes::blue;

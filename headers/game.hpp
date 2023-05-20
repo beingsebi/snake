@@ -48,11 +48,13 @@ class Game
     void update_snake();
     void check_event();
     void check_high_score();
-    Game(const Game &) = delete;
-    Game operator=(const Game &) = delete;
+
+    Game();
 
 public:
-    Game();
+    Game(const Game &) = delete;
+    Game operator=(const Game &) = delete;
+    static Game &get_game();
     ~Game();
     bool is_running() const;
     void update();

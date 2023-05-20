@@ -5,6 +5,13 @@
 using std::ifstream;
 using std::make_unique;
 using std::mt19937;
+
+Game &Game::get_game()
+{
+    static Game game;
+    return game;
+}
+
 Game::Game()
 {
     if (!this->font.loadFromFile("files/Roboto.ttf"))

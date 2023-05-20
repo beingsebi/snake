@@ -9,7 +9,6 @@ using std::ofstream;
 void play();
 int main()
 {
-
     try
     {
         play();
@@ -42,7 +41,7 @@ int main()
 }
 void play()
 {
-    Game game;
+    auto &game = Game::get_game();
 
     while (game.is_running())
     {

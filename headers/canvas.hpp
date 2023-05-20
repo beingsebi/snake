@@ -14,8 +14,13 @@ class Canvas
     vector<vector<Cell>> matrix;
     vector<pair<int, int>> disabled_cells;
 
-public:
     Canvas();
+
+public:
+    Canvas(const Canvas &) = delete;
+    Canvas operator=(const Canvas &) = delete;
+    static Canvas &get_canvas();
+
     void init();
     void enable_rcell();
     vector<vector<Cell>> get_matrix() const;

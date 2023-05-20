@@ -6,6 +6,12 @@ Canvas::Canvas()
     this->init();
 }
 
+Canvas &Canvas::get_canvas()
+{
+    static Canvas canvas;
+    return canvas;
+}
+
 void Canvas::init()
 {
     this->matrix.clear();

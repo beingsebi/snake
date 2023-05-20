@@ -28,7 +28,7 @@ class Game
     sf::Text text_score;
     sf::Text text_high_score;
     sf::Font font;
-    Canvas canvas;
+    Canvas &canvas = Canvas::get_canvas();
     Snake snake;
     unique_ptr<Event> s_ev;
     int score = 0;

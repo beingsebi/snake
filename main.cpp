@@ -9,7 +9,7 @@ using std::ofstream;
 void play();
 int main()
 {
-    auto &game1 = Game<double>::get_game();
+    const auto &game1 = Game<double>::get_game();
     cout << game1;
     // it works
 

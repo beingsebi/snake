@@ -7,15 +7,18 @@
 using std::pair;
 using std::string;
 
+template <typename T>
 class Game;
+
+template <typename T>
 class Event
 {
 protected:
-    Game *pg;
+    Game<T> *pg;
     pair<int, int> pos, offset;
     string path;
     float scale;
-    Event(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
+    Event(Game<T> *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
 
 public:
     virtual ~Event() = default;
@@ -27,7 +30,8 @@ public:
     float get_scale() const;
 };
 
-class Fruit : public Event
+template <typename T>
+class Fruit : public Event<T>
 {
     int to_add;
 
@@ -35,10 +39,11 @@ public:
     void actiune() override;
     virtual ~Fruit() = default;
     Fruit() = default;
-    Fruit(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
+    Fruit(Game<T> *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
 };
 
-class Flower : public Event
+template <typename T>
+class Flower : public Event<T>
 {
     Constants::Themes theme;
 
@@ -48,20 +53,22 @@ public:
     virtual ~Flower() = default;
     void reset_count();
     Flower() = default;
-    Flower(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const Constants::Themes);
+    Flower(Game<T> *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const Constants::Themes);
 };
 
-class Key : public Event
+template <typename T>
+class Key : public Event<T>
 {
 
 public:
     virtual ~Key() = default;
     void actiune() override;
     Key() = default;
-    Key(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
+    Key(Game<T> *, const pair<int, int> &, const pair<int, int> &, const string &, const float);
 };
 
-class Vegetable : public Event
+template <typename T>
+class Vegetable : public Event<T>
 {
     int penalty;
 
@@ -69,6 +76,6 @@ public:
     void actiune() override;
     virtual ~Vegetable() = default;
     Vegetable() = default;
-    Vegetable(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
+    Vegetable(Game<T> *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const int);
 };
 #endif

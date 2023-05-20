@@ -24,6 +24,7 @@ struct Constants
     static vector<string> const ev_paths;
     static pair<int, int> const NO_DISABLED;
     static int const bonus_score;
+    static int const bonus_mod;
     static int const key_score;
     static string const HIGH_SCORE_PATH;
     static int const prob_key;

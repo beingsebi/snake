@@ -3,6 +3,7 @@
 int const Constants::lines = 15;
 int const Constants::columns = 20;
 int const Constants::bonus_score = 82;
+int const Constants::bonus_mod = 5;
 int const Constants::key_score = 10;
 
 int const Constants::prob_key = 4;

@@ -6,13 +6,15 @@ using std::ifstream;
 using std::make_unique;
 using std::mt19937;
 
-Game &Game::get_game()
+template <typename T>
+Game<T> &Game<T>::get_game()
 {
-    static Game game;
+    static Game<T> game;
     return game;
 }
 
-Game::Game()
+template <typename T>
+Game<T>::Game()
 {
     if (!this->font.loadFromFile("files/Roboto.ttf"))
     {
@@ -33,7 +35,8 @@ Game::Game()
     this->init_ev();
 }
 
-void Game::init_ev()
+template <typename T>
+void Game<T>::init_ev()
 {
     this->s_ev.reset();
     static int p_k = Constants::prob_key,
@@ -65,7 +68,7 @@ void Game::init_ev()
         off = {9, 0};
         pth = Constants::ev_paths[Constants::key];
         scl = 1.5f;
-        this->s_ev = make_unique<Key>(this, pz, off, pth, scl);
+        this->s_ev = make_unique<Key<T>>(this, pz, off, pth, scl);
     }
     else if (guess == 2)
     {
@@ -76,7 +79,8 @@ void Game::init_ev()
         pth = Constants::ev_paths[4 + guess];
         scl = 1.6f;
         off = {2, 4};
-        this->s_ev = make_unique<Flower>(this, pz, off, pth, scl, static_cast<Constants::Themes>(guess));
+        if (guess & 1)
+            this->s_ev = make_unique<Flower<T>>(this, pz, off, pth, scl, static_cast<Constants::Themes>(guess));
     }
     else if (guess == 3)
     {
@@ -101,7 +105,7 @@ void Game::init_ev()
         }
         pth = Constants::ev_paths[guess];
         scl = 1.5f;
-        this->s_ev = make_unique<Fruit>(this, pz, off, pth, scl, td);
+        this->s_ev = make_unique<Fruit<T>>(this, pz, off, pth, scl, td);
     }
     else if (guess == 4)
     {
@@ -109,16 +113,18 @@ void Game::init_ev()
         scl = 1.6f;
         off = {0, 0};
         td = -5;
-        this->s_ev = make_unique<Vegetable>(this, pz, off, pth, scl, td);
+        this->s_ev = make_unique<Vegetable<T>>(this, pz, off, pth, scl, td);
     }
 }
 
-Game::~Game()
+template <typename T>
+Game<T>::~Game()
 {
     delete this->window;
 }
 
-void Game::reset()
+template <typename T>
+void Game<T>::reset()
 {
     while (!this->moves.empty())
         this->moves.pop();
@@ -131,7 +137,8 @@ void Game::reset()
     this->reset_count();
 }
 
-void Game::poll_events()
+template <typename T>
+void Game<T>::poll_events()
 {
     while (this->window->pollEvent(this->ev))
     {
@@ -212,7 +219,8 @@ void Game::poll_events()
         this->window->setFramerateLimit(7);
 }
 
-void Game::draw_canvas()
+template <typename T>
+void Game<T>::draw_canvas()
 {
     static sf::RectangleShape rect;
     for (const auto &i : this->canvas.get_matrix())
@@ -228,22 +236,26 @@ void Game::draw_canvas()
         }
 }
 
-void Game::increment_count()
+template <typename T>
+void Game<T>::increment_count()
 {
     this->bonus_count++;
 }
 
-void Game::reset_count()
+template <typename T>
+void Game<T>::reset_count()
 {
     this->bonus_count = 0;
 }
 
-int Game::get_count() const
+template <typename T>
+int Game<T>::get_count() const
 {
     return this->bonus_count;
 }
 
-string Game::get_high_score() const
+template <typename T>
+string Game<T>::get_high_score() const
 {
     static string s;
     ifstream f(Constants::HIGH_SCORE_PATH);
@@ -261,7 +273,8 @@ string Game::get_high_score() const
     return s;
 }
 
-void Game::draw_snake()
+template <typename T>
+void Game<T>::draw_snake()
 {
     static sf::RectangleShape rect;
     rect.setSize(Constants::cell_size);
@@ -280,7 +293,8 @@ void Game::draw_snake()
     }
 }
 
-void Game::draw_event()
+template <typename T>
+void Game<T>::draw_event()
 {
     static pair<int, int> ax1, ax2;
     sf::Sprite sprite;
@@ -298,7 +312,8 @@ void Game::draw_event()
     this->window->draw(sprite);
 }
 
-void Game::draw_scores()
+template <typename T>
+void Game<T>::draw_scores()
 {
     this->text_score.setFont(this->font);
     this->text_score.setString("Score:  " + std::to_string(this->score));
@@ -315,7 +330,8 @@ void Game::draw_scores()
     this->window->draw(this->text_high_score);
 }
 
-void Game::check_game_over()
+template <typename T>
+void Game<T>::check_game_over()
 {
     if (this->snake.is_outside() || canvas.is_disabled(this->snake[0]))
     {
@@ -332,12 +348,14 @@ void Game::check_game_over()
         }
 }
 
-bool Game::is_running() const
+template <typename T>
+bool Game<T>::is_running() const
 {
     return this->window->isOpen();
 }
 
-void Game::update()
+template <typename T>
+void Game<T>::update()
 {
     this->poll_events();
     if (this->game_over)
@@ -349,7 +367,8 @@ void Game::update()
         this->reset();
 }
 
-void Game::render()
+template <typename T>
+void Game<T>::render()
 {
     this->window->clear();
 
@@ -363,12 +382,15 @@ void Game::render()
     this->update_snake();
 }
 
-void Game::update_snake()
+template <typename T>
+void Game<T>::update_snake()
 {
     if (!this->moves.empty())
         this->snake.set_direction(this->moves.front()), this->moves.pop();
 }
-ostream &operator<<(ostream &os, const Game &game)
+
+template <typename T>
+ostream &operator<<(ostream &os, const Game<T> &game)
 {
     os << game.canvas << '\n'
        << game.snake << '\n';
@@ -376,39 +398,45 @@ ostream &operator<<(ostream &os, const Game &game)
     return os;
 }
 
-void Game::check_event()
+template <typename T>
+void Game<T>::check_event()
 {
     if (this->s_ev.get()->get_pos() != this->snake[0])
         return;
 
     this->s_ev.get()->actiune();
-    if (auto *c = dynamic_cast<Flower *>(this->s_ev.get()))
+    if (auto *c = dynamic_cast<Flower<T> *>(this->s_ev.get()))
         c->bonus();
 
     this->init_ev();
 }
 
-Canvas &Game::get_canvas()
+template <typename T>
+Canvas &Game<T>::get_canvas()
 {
     return canvas;
 }
 
-void Game::set_theme(const Constants::Themes thm)
+template <typename T>
+void Game<T>::set_theme(const Constants::Themes thm)
 {
     this->theme = thm;
 }
 
-void Game::add_grow(int gr)
+template <typename T>
+void Game<T>::add_grow(int gr)
 {
     this->snake.add_grow(gr);
 }
 
-void Game::add_score(int s)
+template <typename T>
+void Game<T>::add_score(T s)
 {
     this->score += s;
 }
 
-void Game::check_high_score()
+template <typename T>
+void Game<T>::check_high_score()
 {
     static int hs;
     hs = 0;

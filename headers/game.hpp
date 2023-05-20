@@ -19,7 +19,10 @@ using std::string;
 using std::unique_ptr;
 using std::vector;
 
+template <typename T>
 class Event;
+
+template <typename T>
 class Game
 {
     sf::RenderWindow *window;
@@ -30,8 +33,8 @@ class Game
     sf::Font font;
     Canvas &canvas = Canvas::get_canvas();
     Snake &snake = Snake::get_snake();
-    unique_ptr<Event> s_ev;
-    float score = 0;
+    unique_ptr<Event<T>> s_ev;
+    T score = 0;
     Constants::Themes theme = Constants::Themes::blue;
     bool game_over = 0;
     queue<int> moves;
@@ -64,8 +67,9 @@ public:
     void increment_count();
     int get_count() const;
     void reset_count();
-    void add_score(int);
+    void add_score(T);
     Canvas &get_canvas();
-    friend ostream &operator<<(ostream &, const Game &);
+    template <class U>
+    friend ostream &operator<<(ostream &, const Game<U> &);
 };
 #endif

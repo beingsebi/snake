@@ -41,7 +41,7 @@ int main()
 }
 void play()
 {
-    auto &game = Game::get_game();
+    auto &game = Game<double>::get_game();
 
     while (game.is_running())
     {

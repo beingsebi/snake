@@ -1,8 +1,6 @@
 #include "../headers/event.hpp"
 #include "../headers/game.hpp"
 
-int Flower::count = 0;
-
 Event::Event(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl) : pg{g}, pos{p}, offset{off}, path{pth}, scale{scl} {}
 
 Fruit::Fruit(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl, const int td) : Event{g, p, off, pth, scl}, to_add{td} {}
@@ -35,15 +33,15 @@ void Key::actiune()
 
 void Flower::bonus()
 {
-    count = (count + 1) % 5;
-    if (!count)
-        this->pg->add_score(Constants::bonus_score),
+    this->pg->increment_count();
+    if (!(this->pg->get_count() % 2))
+        this->pg->add_score(Constants::bonus_score / 4),
             this->pg->add_grow(1);
 }
 
 void Flower::reset_count()
 {
-    count = 0;
+    this->pg->reset_count();
 }
 
 Vegetable::Vegetable(Game *g, const pair<int, int> &p, const pair<int, int> &off, const string &pth, const float scl, const int td) : Event{g, p, off, pth, scl}, penalty{td} {}

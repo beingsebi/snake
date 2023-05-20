@@ -31,11 +31,11 @@ class Game
     Canvas &canvas = Canvas::get_canvas();
     Snake &snake = Snake::get_snake();
     unique_ptr<Event> s_ev;
-    int score = 0;
+    float score = 0;
     Constants::Themes theme = Constants::Themes::blue;
     bool game_over = 0;
     queue<int> moves;
-
+    int bonus_count = 0;
     void poll_events();
     string get_high_score() const;
     void init_ev();
@@ -61,6 +61,9 @@ public:
     void render();
     void set_theme(const Constants::Themes);
     void add_grow(int);
+    void increment_count();
+    int get_count() const;
+    void reset_count();
     void add_score(int);
     Canvas &get_canvas();
     friend ostream &operator<<(ostream &, const Game &);

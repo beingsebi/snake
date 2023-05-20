@@ -40,14 +40,13 @@ public:
 
 class Flower : public Event
 {
-    static int count;
     Constants::Themes theme;
 
 public:
     void actiune() override;
     void bonus();
     virtual ~Flower() = default;
-    static void reset_count();
+    void reset_count();
     Flower() = default;
     Flower(Game *, const pair<int, int> &, const pair<int, int> &, const string &, const float, const Constants::Themes);
 };

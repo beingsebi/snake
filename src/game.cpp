@@ -128,7 +128,7 @@ void Game::reset()
     this->theme = Constants::Themes::blue; //! the order!!
     this->init_ev();
     score = 0;
-    Flower::reset_count();
+    this->reset_count();
 }
 
 void Game::poll_events()
@@ -226,6 +226,21 @@ void Game::draw_canvas()
             rect.setOutlineColor(Constants::border_color[theme]);
             this->window->draw(rect);
         }
+}
+
+void Game::increment_count()
+{
+    this->bonus_count++;
+}
+
+void Game::reset_count()
+{
+    this->bonus_count = 0;
+}
+
+int Game::get_count() const
+{
+    return this->bonus_count;
 }
 
 string Game::get_high_score() const

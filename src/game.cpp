@@ -79,8 +79,7 @@ void Game<T>::init_ev()
         pth = Constants::ev_paths[4 + guess];
         scl = 1.6f;
         off = {2, 4};
-        if (guess & 1)
-            this->s_ev = make_unique<Flower<T>>(this, pz, off, pth, scl, static_cast<Constants::Themes>(guess));
+        this->s_ev = make_unique<Flower<T>>(this, pz, off, pth, scl, static_cast<Constants::Themes>(guess));
     }
     else if (guess == 3)
     {

@@ -9,6 +9,11 @@ using std::ofstream;
 void play();
 int main()
 {
+    auto &game1 = Game<double>::get_game();
+    cout << game1;
+    // it works
+
+    // but let's play it with the score as an int
     try
     {
         play();
@@ -41,7 +46,7 @@ int main()
 }
 void play()
 {
-    auto &game = Game<double>::get_game();
+    auto &game = Game<int>::get_game();
 
     while (game.is_running())
     {
